@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detection.DetectionFishActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_detection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_detection"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:navigationIcon="@drawable/ic_back_blue"
+            app:title="@string/detection_frehsness"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/Text.SemiBold.Big"
+            app:titleTextColor="@color/blue" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/img_photo_input"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="@string/put_image"
+        android:src="@drawable/ic_img_input"
+        app:layout_constraintBottom_toBottomOf="@id/gl_separator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar_detection" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_separator"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@id/gl_bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.45"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_notes"
+        style="@style/Text.Regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:maxLines="3"
+        android:text="@string/notes_detection"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_separator" />
+
+    <Button
+        android:id="@+id/btn_gallery"
+        style="@style/Text.Medium.Big"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/bg_button_border"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/put_from_gallery"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_notes"
+        tools:targetApi="m" />
+
+    <Button
+        android:id="@+id/btn_camera"
+        style="@style/Text.Medium.Big"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="@dimen/activity_vertical_margin"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_button_border"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/take_from_camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_gallery"
+        tools:targetApi="m" />
+
+    <Button
+        android:id="@+id/btn_detection"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="@dimen/activity_vertical_margin"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_button"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="@string/detection_frehsness"
+        android:textAppearance="@style/Text.Medium.Big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_camera"
+        tools:targetApi="m" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_detection"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_bottom_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.9"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

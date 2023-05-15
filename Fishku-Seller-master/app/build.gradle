@@ -1,0 +1,112 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+}
+
+
+android {
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "id.fishku.fisherseller"
+        minSdk 21
+        targetSdk 33
+        versionCode 3
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+    namespace 'id.fishku.fisherseller'
+}
+
+dependencies {
+    implementation project(":core")
+    implementation project(":otp")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.7.20"
+    implementation 'com.google.android.material:material:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation project(path: ':seller')
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation project(path: ':notification')
+    implementation 'com.google.android.gms:play-services-auth:20.4.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    //Jetpack Navigation Component
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+
+    // Groupie - for complex recycler views
+    implementation 'com.github.lisawray.groupie:groupie:2.10.1'
+    implementation 'com.github.lisawray.groupie:groupie-kotlin-android-extensions:2.10.1'
+    implementation "com.github.lisawray.groupie:groupie-viewbinding:2.10.1"
+    implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
+
+    // Lifecycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation "androidx.activity:activity-ktx:1.6.1"
+    implementation "androidx.fragment:fragment-ktx:1.5.4"
+    implementation "androidx.lifecycle:lifecycle-service:2.5.1"
+
+    // Image
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.airbnb.android:lottie:5.2.0'
+    implementation 'id.zelory:compressor:3.0.1'
+
+    implementation 'com.github.bumptech.glide:glide:4.14.1'
+    kapt 'com.github.bumptech.glide:compiler:4.14.1'
+
+    // firebase
+    implementation platform("com.google.firebase:firebase-bom:31.0.3")
+    implementation "com.google.firebase:firebase-firestore-ktx"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.44"
+    androidTestImplementation project(path: ':app')
+    androidTestImplementation project(path: ':app')
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
+    // Security
+    implementation "androidx.security:security-crypto:1.1.0-alpha04"
+    implementation 'com.scottyab:secure-preferences-lib:0.1.7'
+
+    // FCM
+    implementation 'com.google.firebase:firebase-messaging:23.1.0'
+
+    // Google Maps
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+}

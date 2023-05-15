@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="10dp">
+
+    <ImageView
+        android:id="@+id/item_img_photo_checkout"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/product_photo"
+        android:src="@color/blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_tv_name_checkout"
+        style="@style/Text.Medium.Medium"
+        android:layout_width="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/fish_name"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_img_photo_checkout"
+        app:layout_constraintTop_toTopOf="@+id/item_img_photo_checkout" />
+
+    <TextView
+        android:id="@+id/item_tv_weight_checkout"
+        style="@style/Text.Regular.Small"
+        android:layout_width="0dp"
+        android:text="@string/weight"
+        app:layout_constraintStart_toEndOf="@+id/item_img_photo_checkout"
+        app:layout_constraintStart_toStartOf="@+id/item_tv_name_checkout"
+        app:layout_constraintTop_toBottomOf="@+id/item_tv_name_checkout" />
+
+    <TextView
+        android:id="@+id/item_tv_price_checkout"
+        style="@style/Text.Regular.Medium"
+        android:layout_width="0dp"
+        android:text="@string/price"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@+id/item_tv_name_checkout"
+        app:layout_constraintTop_toBottomOf="@+id/item_tv_weight_checkout" />
+</androidx.constraintlayout.widget.ConstraintLayout>

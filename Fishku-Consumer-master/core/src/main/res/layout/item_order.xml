@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="20dp">
+
+    <TextView
+        android:id="@+id/item_tv_date_order"
+        style="@style/Text.Medium.Medium"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@string/dummy_date" />
+
+    <TextView
+        android:id="@+id/item_tv_price_order"
+        style="@style/Text.SemiBold.Medium"
+        android:layout_marginTop="4dp"
+        android:text="@string/price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/item_tv_date_order"
+        app:layout_constraintTop_toBottomOf="@id/item_tv_date_order" />
+
+    <TextView
+        android:id="@+id/item_tv_status_order"
+        style="@style/Text.Regular.Small"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@id/item_tv_date_order"
+        app:layout_constraintTop_toBottomOf="@id/item_tv_price_order"
+        tools:text="@string/dummy_status" />
+
+    <Button
+        android:id="@+id/btn_track_order"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/yellow"
+        android:paddingHorizontal="4dp"
+        android:text="@string/track"
+        android:textAllCaps="false"
+        android:textAppearance="@style/Text.Regular.Small"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/btn_invoice"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginRight="8dp"
+        android:backgroundTint="@color/yellow"
+        android:paddingHorizontal="4dp"
+        android:text="@string/invoice"
+        android:textAllCaps="false"
+        android:textAppearance="@style/Text.Regular.Small"
+        android:textColor="@color/blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_track_order" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detection.FishTypeDialogFragment">
+
+    <FrameLayout
+        android:id="@+id/modal_bottom_sheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:behavior_saveFlags="all">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="24dp">
+
+            <ImageView
+                android:id="@+id/img_photo_fish"
+                android:layout_width="86dp"
+                android:layout_height="72dp"
+                android:contentDescription="@string/select_fish"
+                android:scaleType="centerCrop"
+                android:src="@drawable/img_fish_placerholder"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_name_fish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:textAppearance="@style/Text.SemiBold.Medium.Black"
+                app:layout_constraintBottom_toBottomOf="@id/img_photo_fish"
+                app:layout_constraintStart_toEndOf="@id/img_photo_fish"
+                app:layout_constraintTop_toTopOf="@id/img_photo_fish"
+                tools:text="Ikan Bandeng" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                app:dividerColor="@color/light_blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_photo_fish" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:text="@string/select_type"
+                android:textAppearance="@style/Text.Medium.Medium"
+                app:layout_constraintBottom_toTopOf="@id/horizontal_scroll_view"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/divider" />
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_scroll_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/textView">
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cg_fish_part"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn_eye"
+                        style="@style/CustomChipChoice"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/eye"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Text.Medium.Medium" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn_gill"
+                        style="@style/CustomChipChoice"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gill"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Text.Medium.Medium" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn_meat"
+                        style="@style/CustomChipChoice"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/meat"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Text.Medium.Medium" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn_texture"
+                        style="@style/CustomChipChoice"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/texture"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Text.Medium.Medium" />
+                </com.google.android.material.chip.ChipGroup>
+            </HorizontalScrollView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_select_fish"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:background="@drawable/bg_button"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:text="@string/select_fish"
+                android:textAppearance="@style/Text.Medium.Big"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/horizontal_scroll_view"
+                tools:targetApi="m" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

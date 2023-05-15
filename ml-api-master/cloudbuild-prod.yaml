@@ -1,0 +1,18 @@
+steps:
+
+  # Connect to GCS Bucket
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'gs://model-ml-prod/*.h5', '.']
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/fishku-prod/backend-model-ml:v.1.0.0', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/fishku-prod/backend-model-ml:v.1.0.0']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'backend-model-ml', '--image', 'gcr.io/fishku-prod/backend-model-ml:v.1.0.0', '--region', 'asia-southeast2']
+images:
+- gcr.io/fishku-prod/backend-model-ml:v.1.0.0
+

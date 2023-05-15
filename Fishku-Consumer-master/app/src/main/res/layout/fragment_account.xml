@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".account.AccountFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:liftOnScroll="true">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:menu="@menu/profile_menu"
+            app:title="@string/title_account"
+            app:titleCentered="true"
+            app:titleTextAppearance="@style/Text.SemiBold.Big"
+            app:titleTextColor="@color/blue" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerColor="@color/grey_10" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar_account">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="64dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_account" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:fitsSystemWindows="false">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/img_account_photo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginHorizontal="16dp"
+                        android:layout_marginVertical="24dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_profile"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.082" />
+
+                    <TextView
+                        android:id="@+id/tv_account_name"
+                        style="@style/Text.Medium.Big"
+                        android:layout_width="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="64dp"
+                        android:lineSpacingMultiplier="0.8"
+                        android:textColor="@color/black"
+                        app:layout_constraintBottom_toTopOf="@id/tv_account_email"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/img_account_photo"
+                        app:layout_constraintTop_toTopOf="@id/img_account_photo"
+                        app:layout_constraintVertical_chainStyle="packed"
+                        tools:text="Nama" />
+
+                    <TextView
+                        android:id="@+id/tv_account_email"
+                        style="@style/Text.Regular"
+                        android:layout_width="0dp"
+                        android:textColor="@color/blue"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toTopOf="@id/tv_account_phone_number"
+                        app:layout_constraintEnd_toEndOf="@id/tv_account_name"
+                        app:layout_constraintStart_toStartOf="@+id/tv_account_name"
+                        app:layout_constraintTop_toBottomOf="@id/tv_account_name"
+                        tools:text="Email" />
+
+                    <TextView
+                        android:id="@+id/tv_account_phone_number"
+                        style="@style/Text.Regular"
+                        android:layout_width="0dp"
+                        android:textColor="@color/blue"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_account_photo"
+                        app:layout_constraintEnd_toEndOf="@id/tv_account_name"
+                        app:layout_constraintStart_toStartOf="@+id/tv_account_name"
+                        app:layout_constraintTop_toBottomOf="@id/tv_account_email"
+                        tools:text="Phone Number" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/materialDivider3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:dividerColor="@color/grey_10"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_google_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/stroke_button_grey"
+                        android:drawableStart="@drawable/ic_google"
+                        android:drawablePadding="16dp"
+                        android:paddingStart="24dp"
+                        android:paddingEnd="24dp"
+                        android:text="@string/link_to_google"
+                        android:textAllCaps="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_account_phone_number" />
+
+                    <ImageButton
+                        android:id="@+id/btn_edit_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/desc_edit_profile"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintStart_toEndOf="@id/tv_account_name"
+                        app:layout_constraintTop_toTopOf="@id/tv_account_name" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabIndicatorColor="@color/blue"
+                app:tabTextAppearance="@style/Text.Medium.Medium.Tab"
+                app:tabTextColor="@color/black" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager_order"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

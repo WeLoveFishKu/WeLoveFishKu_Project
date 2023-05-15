@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="12dp">
+
+    <TextView
+        android:id="@+id/placeholder_tv_date_order"
+        style="@style/Text.Medium.Medium"
+        android:layout_width="200dp"
+        android:layout_height="25dp"
+        android:background="@drawable/bg_text_placeholder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_tv_price_order"
+        style="@style/Text.SemiBold.Medium"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_text_placeholder"
+        app:layout_constraintStart_toStartOf="@+id/placeholder_tv_date_order"
+        app:layout_constraintTop_toBottomOf="@id/placeholder_tv_date_order" />
+
+    <TextView
+        android:id="@+id/item_tv_status_order"
+        style="@style/Text.Regular.Small"
+        android:layout_width="70dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_text_placeholder"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toStartOf="@id/placeholder_tv_date_order"
+        app:layout_constraintTop_toBottomOf="@id/item_tv_price_order" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

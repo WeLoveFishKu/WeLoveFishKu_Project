@@ -1,0 +1,9 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="@color/red_btn_bg_pressed_color"
+        android:pathData="M5 22c-0.27 0-0.52-0.1-0.7-0.3C4.1 21.53 4 21.28 4 21V3c0-0.27 0.1-0.52 0.3-0.7C4.47 2.1 4.72 2 5 2h14c0.27 0 0.52 0.1 0.7 0.3C19.9 2.47 20 2.72 20 3v3h-2V4H6v16h12v-2h2v3c0 0.27-0.1 0.52-0.3 0.7-0.18 0.2-0.43 0.3-0.7 0.3H5Zm13-6v-3h-7v-2h7V8l5 4-5 4Z" />
+</vector>

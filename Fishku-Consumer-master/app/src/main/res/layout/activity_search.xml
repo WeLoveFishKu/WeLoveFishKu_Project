@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".search.SearchActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:liftOnScroll="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:menu="@menu/dashboard_menu"
+                app:title="@string/find_fish"
+                app:titleCentered="true"
+                app:titleTextAppearance="@style/Text.SemiBold.Big"
+                app:titleTextColor="@color/blue" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view_fish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_search_view"
+            app:defaultQueryHint="@string/search_hint"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_search"
+            app:queryBackground="@android:color/transparent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_search_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:clipToPadding="false"
+            android:paddingVertical="10dp"
+            android:scrollbars="none"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view_fish"
+            app:spanCount="2"
+            tools:listitem="@layout/item_fish_product_grid" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_search"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view_fish"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loading.json"
+            app:lottie_loop="true" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/img_empty_search"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view_fish"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="search_empty.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/tv_empty_search"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="wrap_content"
+            android:text="@string/empty_search_product"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/img_empty_search"
+            app:layout_constraintStart_toStartOf="@id/img_empty_search"
+            app:layout_constraintTop_toTopOf="@id/img_empty_search" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/img_error_search"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_view_fish"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="error.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/tv_error_search"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="wrap_content"
+            android:text="@string/something_went_wrong"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/img_error_search"
+            app:layout_constraintStart_toStartOf="@id/img_error_search"
+            app:layout_constraintTop_toTopOf="@id/img_error_search" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

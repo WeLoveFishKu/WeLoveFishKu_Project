@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:paddingVertical="24dp"
+    tools:targetApi="m">
+
+    <CheckBox
+        android:id="@+id/item_checkbox_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/item_img_photo_cart"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="4dp"
+        android:contentDescription="@string/product_photo"
+        android:scaleType="centerCrop"
+        android:src="@color/blue"
+        app:layout_constraintStart_toEndOf="@+id/item_checkbox_cart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_tv_name_cart"
+        style="@style/Text.Medium.Medium"
+        android:layout_width="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="14dp"
+        android:text="@string/fish_name"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_img_photo_cart"
+        app:layout_constraintTop_toTopOf="@+id/item_img_photo_cart" />
+
+    <TextView
+        android:id="@+id/item_tv_price_cart"
+        style="@style/Text.Regular.Medium"
+        android:layout_width="0dp"
+        android:text="@string/price"
+        android:textColor="@color/blue"
+        app:layout_constraintStart_toEndOf="@+id/item_img_photo_cart"
+        app:layout_constraintStart_toStartOf="@+id/item_tv_name_cart"
+        app:layout_constraintTop_toBottomOf="@+id/item_tv_name_cart" />
+
+    <TextView
+        android:id="@+id/item_tv_weight_cart"
+        style="@style/Text.Regular.Small"
+        android:layout_width="0dp"
+        android:text="@string/weight"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete_cart"
+        app:layout_constraintStart_toStartOf="@+id/item_tv_price_cart"
+        app:layout_constraintTop_toBottomOf="@+id/item_tv_price_cart" />
+
+    <ImageButton
+        android:id="@+id/btn_delete_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_delete_cart"
+        app:layout_constraintBottom_toBottomOf="@+id/item_img_photo_cart"
+        app:layout_constraintEnd_toEndOf="@+id/item_tv_name_cart" />
+</androidx.constraintlayout.widget.ConstraintLayout>

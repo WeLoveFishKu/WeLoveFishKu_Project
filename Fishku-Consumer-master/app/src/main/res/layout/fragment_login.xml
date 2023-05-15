@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    tools:context=".auth.login.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/login_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="32dp">
+
+        <ImageView
+            android:id="@+id/logo_fisku_login"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@string/fishku_logo"
+            android:src="@drawable/logo_fishku"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email_login"
+            style="@style/TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="@+id/logo_fisku_login"
+            app:layout_constraintStart_toStartOf="@+id/logo_fisku_login"
+            app:layout_constraintTop_toBottomOf="@id/logo_fisku_login"
+            app:startIconDrawable="@drawable/ic_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_email_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:textAppearance="@style/Text.Regular.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password_login"
+            style="@style/TextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/logo_fisku_login"
+            app:layout_constraintStart_toStartOf="@+id/logo_fisku_login"
+            app:layout_constraintTop_toBottomOf="@id/til_email_login"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/ic_password">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/password"
+                android:inputType="textPassword"
+                android:textAppearance="@style/Text.Regular.Medium" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/btn_forgot_password"
+            style="@style/Text.Regular.Small"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/forgot_password"
+            android:textAlignment="textEnd"
+            android:textColor="@color/blue"
+            app:layout_constraintEnd_toEndOf="@+id/til_password_login"
+            app:layout_constraintTop_toBottomOf="@id/til_password_login" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login"
+            style="@style/Button"
+            android:layout_width="match_parent"
+            android:layout_marginTop="24dp"
+            android:text="@string/login"
+            app:layout_constraintEnd_toEndOf="@+id/logo_fisku_login"
+            app:layout_constraintStart_toStartOf="@+id/logo_fisku_login"
+            app:layout_constraintTop_toBottomOf="@+id/btn_forgot_password" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/Text.Regular.Small"
+            android:layout_width="wrap_content"
+            android:text="@string/or"
+            app:layout_constraintEnd_toEndOf="@+id/btn_login"
+            app:layout_constraintStart_toStartOf="@+id/btn_login"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+        <Button
+            android:id="@+id/btn_google_sign"
+            style="@style/OutlinedButton"
+            android:layout_width="0dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@string/log_in_dengan_google"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:icon="@drawable/ic_google"
+            app:iconTint="@null"
+            app:layout_constraintEnd_toEndOf="@+id/btn_login"
+            app:layout_constraintStart_toStartOf="@+id/btn_login"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@+id/btn_google_sign"
+            app:layout_constraintStart_toStartOf="@+id/btn_google_sign"
+            app:layout_constraintTop_toBottomOf="@id/btn_google_sign">
+
+            <TextView
+                style="@style/Text.Regular.Small"
+                android:layout_width="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="@string/dont_have_account" />
+
+            <TextView
+                android:id="@+id/btn_register_here"
+                style="@style/Text.Regular.Small"
+                android:layout_width="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="@string/register_here"
+                android:textColor="@color/blue" />
+        </LinearLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_login"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loading.json"
+            app:lottie_loop="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".statusdelivery.StatusDeliveryActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_status_delivery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="1dp"
+            app:liftOnScroll="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_status_delivery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:navigationIcon="@drawable/ic_back_blue"
+                app:title="@string/title_status_order"
+                app:titleCentered="true"
+                app:titleTextAppearance="@style/Text.SemiBold.Big"
+                app:titleTextColor="@color/blue" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/grey_10" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/receiver" />
+
+                <TextView
+                    style="@style/Text.Medium.Small"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/dummy_name" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Small"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/phone" />
+
+                <TextView
+                    style="@style/Text.Regular.Medium"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/dummy_phone_number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Small"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/address" />
+
+                <TextView
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/tpi_address" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Small"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="@string/courier" />
+
+                <TextView
+                    style="@style/Text.Regular.Medium"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="@string/fishku_express" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                style="@style/Text.Medium.Big"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/resi_number"
+                android:textColor="@color/blue" />
+
+            <TextView
+                style="@style/Text.Medium.Big"
+                android:layout_width="wrap_content"
+                android:text="@string/dummy_resi"
+                android:textColor="@color/blue" />
+        </LinearLayout>
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_marginTop="8dp"
+            app:dividerColor="@color/grey" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detail_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_delivery" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_button"
+            android:text="@string/arrived"
+            android:textAppearance="@style/Text.Regular.Medium"
+            android:textSize="20sp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

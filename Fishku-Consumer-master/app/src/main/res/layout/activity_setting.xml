@@ -1,0 +1,214 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    tools:context=".setting.SettingActivity"
+    tools:ignore="PrivateResource">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:liftOnScroll="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_setting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:title="@string/title_setting"
+                app:titleCentered="true"
+                app:titleTextAppearance="@style/Text.SemiBold.Big"
+                app:titleTextColor="@color/blue" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerColor="@color/grey_10" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/btn_address_setting"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_setting_shop"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/address_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_setting" />
+
+        <TextView
+            android:id="@+id/btn_password_setting"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_password_setting"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/account_security"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_address_setting" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider_1"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="8dp"
+            app:dividerColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/btn_password_setting" />
+
+        <TextView
+            android:id="@+id/btn_haki"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_haki"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/haki"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_1" />
+
+        <TextView
+            android:id="@+id/btn_know_fishku"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_fishku_setting"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/know_fishku"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_haki" />
+
+        <TextView
+            android:id="@+id/btn_term_condition"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_term_condition"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/term_condition"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_know_fishku" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider_2"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="8dp"
+            app:dividerColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/btn_term_condition" />
+
+        <TextView
+            android:id="@+id/btn_faq"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_faq"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/faq"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_2" />
+
+        <TextView
+            android:id="@+id/btn_support_fishku"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_support_fishku"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/support_fishku"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_faq" />
+
+        <TextView
+            android:id="@+id/btn_critics_suggestion"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_critics_suggestion"
+            android:drawablePadding="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/critics_suggestion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_support_fishku" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/divider_3"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="8dp"
+            app:dividerColor="@color/grey"
+            app:layout_constraintTop_toBottomOf="@id/btn_critics_suggestion" />
+
+        <TextView
+            android:id="@+id/btn_logout"
+            style="@style/Text.Medium"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_clickable"
+            android:clickable="true"
+            android:drawableStart="@drawable/ic_logout"
+            android:drawablePadding="8dp"
+            android:layout_marginTop="8dp"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="24dp"
+            android:text="@string/logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider_3" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

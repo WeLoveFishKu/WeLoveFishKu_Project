@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detailfish.DetailFishActivity">
+
+    <ScrollView
+        android:id="@+id/container_detail_fish"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/m3_bottom_nav_min_height"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="8dp"
+        android:scrollbars="none">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_fish_detail"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@color/grey"
+                android:contentDescription="@string/image_photo"
+                android:src="@drawable/img_fish"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_fish_name_detail"
+                style="@style/Text.SemiBold.Medium"
+                android:layout_width="0dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"
+                app:layout_constraintEnd_toStartOf="@+id/tv_available_detail"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_fish_detail"
+                tools:text="@string/fish_name" />
+
+            <TextView
+                android:id="@+id/tv_available_detail"
+                style="@style/Text.Regular.Small"
+                android:layout_width="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_available"
+                android:padding="8dp"
+                android:textColor="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/img_fish_detail"
+                tools:text="@string/available_weight" />
+
+            <TextView
+                android:id="@+id/textView1"
+                style="@style/Text.Regular.Medium"
+                android:layout_width="wrap_content"
+                android:maxLines="1"
+                android:text="@string/kg"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/tv_fish_name_detail"
+                app:layout_constraintTop_toBottomOf="@+id/tv_fish_name_detail" />
+
+            <TextView
+                android:id="@+id/tv_price_detail"
+                style="@style/Text.Medium.Big"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/tv_fish_name_detail"
+                app:layout_constraintTop_toBottomOf="@id/textView1"
+                tools:text="@string/fish_price" />
+
+            <ImageButton
+                android:id="@+id/btn_reduce_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/reduce_weight"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:src="@drawable/ic_minus_disable"
+                app:layout_constraintStart_toStartOf="@+id/tv_fish_name_detail"
+                app:layout_constraintTop_toBottomOf="@+id/tv_price_detail" />
+
+            <EditText
+                android:id="@+id/edt_weight"
+                android:layout_width="60dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_weight"
+                android:inputType="number"
+                android:paddingHorizontal="4dp"
+                android:text="@string/default_weight"
+                android:textAlignment="center"
+                android:textAppearance="@style/Text.Regular.Medium"
+                app:layout_constraintBottom_toBottomOf="@+id/btn_reduce_weight"
+                app:layout_constraintStart_toEndOf="@+id/btn_reduce_weight"
+                app:layout_constraintTop_toTopOf="@+id/btn_reduce_weight"
+                tools:ignore="Autofill,LabelFor" />
+
+            <TextView
+                android:id="@+id/tv_weight_label"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/bg_weight_label"
+                android:gravity="center"
+                android:paddingHorizontal="6dp"
+                android:text="@string/weight"
+                android:textAppearance="@style/Text.Regular.Medium"
+                app:layout_constraintBottom_toBottomOf="@+id/edt_weight"
+                app:layout_constraintStart_toEndOf="@id/edt_weight"
+                app:layout_constraintTop_toTopOf="@+id/edt_weight" />
+
+            <ImageButton
+                android:id="@+id/btn_add_weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/add_weight"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:src="@drawable/ic_plus_enable"
+                app:layout_constraintStart_toEndOf="@+id/tv_weight_label"
+                app:layout_constraintTop_toTopOf="@+id/btn_reduce_weight" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_photo_seller"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/ic_profile"
+                app:layout_constraintStart_toStartOf="@+id/tv_fish_name_detail"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/materialDivider2"
+                android:layout_width="0dp"
+                android:layout_height="6dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/grey"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/edt_weight" />
+
+            <TextView
+                android:id="@+id/tv_seller_name"
+                style="@style/Text.Medium.Medium"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:text="@string/seller_name"
+                app:layout_constraintBottom_toTopOf="@+id/tv_seller_tpi"
+                app:layout_constraintStart_toEndOf="@+id/img_photo_seller"
+                app:layout_constraintTop_toTopOf="@+id/img_photo_seller" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/materialDivider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/grey_10"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/img_photo_seller" />
+
+            <TextView
+                android:id="@+id/tv_seller_tpi"
+                style="@style/Text.Regular.Small"
+                android:layout_width="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_photo_seller"
+                app:layout_constraintStart_toStartOf="@+id/tv_seller_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_seller_name"
+                tools:text="@string/tpi_name" />
+
+            <ImageButton
+                android:id="@+id/ic_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:background="@color/white"
+                android:clickable="true"
+                android:contentDescription="@string/app_name"
+                android:focusable="true"
+                android:src="@drawable/ic_message"
+                android:tint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_seller_tpi"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_seller_name" />
+
+            <TextView
+                android:id="@+id/tv_note_detail"
+                style="@style/Text.Medium.Medium"
+                android:layout_width="0dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/note"
+                app:layout_constraintStart_toStartOf="@id/materialDivider"
+                app:layout_constraintTop_toBottomOf="@id/materialDivider" />
+
+            <EditText
+                android:id="@+id/edt_note_detail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/add_note"
+                android:inputType="textMultiLine"
+                android:textAppearance="@style/Text.Regular.Medium"
+                app:layout_constraintEnd_toEndOf="@id/materialDivider"
+                app:layout_constraintStart_toStartOf="@id/tv_note_detail"
+                app:layout_constraintTop_toBottomOf="@+id/tv_note_detail"
+                tools:ignore="Autofill" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/loading_detail_fish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <include layout="@layout/view_detail_fish_placeholder" />
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/error_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/img_error_search"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="error.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/tv_error_search"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="wrap_content"
+            android:text="@string/something_went_wrong"
+            app:layout_constraintEnd_toEndOf="@id/img_error_search"
+            app:layout_constraintStart_toStartOf="@id/img_error_search"
+            app:layout_constraintTop_toTopOf="@id/img_error_search" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:menu="@menu/dashboard_menu"
+            app:navigationIcon="@drawable/ic_back" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/loading_input_cart"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_view_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_bottom_view">
+
+        <Button
+            android:id="@+id/btn_add_to_cart"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_button"
+            android:text="@string/add_to_cart"
+            android:textAppearance="@style/Text.Regular.Medium"
+            android:textSize="20sp"
+            app:icon="@drawable/ic_add_cart"
+            app:iconGravity="textStart"
+            tools:targetApi="m" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

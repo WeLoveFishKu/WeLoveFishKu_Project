@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".detailorder.DetailOrderActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/container_detail_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar_detail_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="1dp"
+                app:liftOnScroll="true">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar_detail_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    app:navigationIcon="@drawable/ic_back_blue"
+                    app:title="@string/title_detail_order"
+                    app:titleCentered="true"
+                    app:titleTextAppearance="@style/Text.SemiBold.Big"
+                    app:titleTextColor="@color/blue" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dividerColor="@color/grey_10" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFF4C0"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/Text.Medium.Medium"
+                    android:text="@string/order_finished"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    style="@style/Text.Regular.Medium"
+                    android:text="@string/order_finished_message"
+                    android:textColor="@color/md_theme_dark_surfaceVariant" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        style="@style/Text.Regular.Small"
+                        android:layout_width="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/courier" />
+
+                    <TextView
+                        style="@style/Text.Regular.Medium"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        tools:text="@string/fishku_express" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        style="@style/Text.Regular.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_marginEnd="40dp"
+                        android:gravity="center_vertical"
+                        android:text="@string/resi_number" />
+
+                    <TextView
+                        style="@style/Text.Regular.Medium"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        tools:text="@string/dummy_resi" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        style="@style/Text.Regular.Small"
+                        android:layout_width="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="@string/address" />
+
+                    <TextView
+                        style="@style/Text.Regular.Medium"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        tools:text="@string/tpi_address" />
+                </TableRow>
+            </TableLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/grey" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_detail_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_order_checkout" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/grey" />
+
+            <TextView
+                style="@style/Text.Medium.Medium"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/detail"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/subtotal_product"
+                    android:textColor="@color/md_theme_light_outline" />
+
+                <TextView
+                    android:id="@+id/tv_subtotal_produk_order"
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="wrap_content"
+                    android:text="@string/fish_price"
+                    android:textColor="@color/md_theme_light_outline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/subtotal_delivery"
+                    android:textColor="@color/md_theme_light_outline" />
+
+                <TextView
+                    android:id="@+id/tv_subtotal_delivery_order"
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/md_theme_light_outline"
+                    tools:text="@string/fish_price" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Medium.Big"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/price_total"
+                    android:textColor="@color/blue" />
+
+                <TextView
+                    android:id="@+id/tv_total_price_order"
+                    style="@style/Text.Medium.Big"
+                    android:layout_width="wrap_content"
+                    android:text="@string/fish_price"
+                    android:textColor="@color/blue" />
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/grey" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Big"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/payment" />
+
+                <TextView
+                    style="@style/Text.Regular.Big"
+                    android:layout_width="wrap_content"
+                    android:text="@string/bca_bank"
+                    android:textColor="@color/blue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bg_button_border"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="@string/contact_seller"
+                    android:textAppearance="@style/Text.Regular.Medium"
+                    android:textColor="@color/blue"
+                    tools:ignore="ButtonStyle"
+                    tools:targetApi="m" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/bg_button_border"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:text="@string/buy_again"
+                    android:textAppearance="@style/Text.Regular.Medium"
+                    android:textColor="@color/blue"
+                    tools:ignore="ButtonStyle"
+                    tools:targetApi="m" />
+            </LinearLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_button"
+                android:text="@string/rating"
+                android:textAppearance="@style/Text.Regular.Medium"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_detail_order"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loading.json"
+            app:lottie_loop="true" />
+
+        <LinearLayout
+            android:id="@+id/tv_error_detail_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/Text.Medium.Medium"
+                android:layout_width="match_parent"
+                android:text="@string/something_went_wrong"
+                android:textAlignment="center" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/img_error_detail_order"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="error.json"
+                app:lottie_loop="true" />
+        </LinearLayout>
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>

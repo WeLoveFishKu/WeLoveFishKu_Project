@@ -1,0 +1,180 @@
+<resources>
+    <string name="app_name">Fishku Partner</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_order">Pesanan</string>
+    <string name="title_account">Akun</string>
+    <string name="logo">Logo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="back">Back</string>
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="login">Masuk</string>
+    <string name="login_account">Masuk Akun</string>
+    <string name="no_account">Tidak punya akun?</string>
+    <string name="register_here">Daftar disini</string>
+    <string name="create_account">Buat Akun Kamu</string>
+    <string name="join">Bergabung</string>
+    <string name="have_account">Sudah punya akun?</string>
+    <string name="login_here">Login disini</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="address">Alamat Usaha</string>
+    <string name="peran">Peran</string>
+    <string name="button">Button</string>
+    <string name="seller_app">PARTNER</string>
+    <string name="fi_hku">FI$HKU</string>
+    <string name="product_name">Masukkan nama barang</string>
+    <string name="menu">Menu</string>
+    <string name="name">Nama Produk</string>
+    <string name="price">Harga</string>
+    <string name="title">Title</string>
+    <string name="create_menu">Buat daftar menu</string>
+    <string name="edit_menu">Edit daftar menu</string>
+    <string name="tips">Foto berkualitas tinggi biasanya jadi lebih populer. Jenis foto yang diterima JPG, PNG</string>
+    <string name="edit_photo">Edit Foto</string>
+    <string name="product">Nama Barang</string>
+    <string name="product_weight">Berat (Kg)</string>
+    <string name="save">Simpan</string>
+    <string name="order">Pesanan</string>
+    <string name="cek_status">Cek Status</string>
+    <string name="detail">Detail Pesanan</string>
+    <string name="weight">weight</string>
+    <string name="note">Catatan</string>
+    <string name="express">Express</string>
+    <string name="payment">Pembayaran</string>
+    <string name="method">Method</string>
+    <string name="alamat">Alamat</string>
+    <string name="sender">Kurir</string>
+    <string name="price_list">Rincian</string>
+    <string name="sub_product">Subtotal Produk</string>
+    <string name="sub_order">Subtotal Pengiriman</string>
+    <string name="total">Total</string>
+    <string name="edit">Edit barang</string>
+    <string name="date">Date</string>
+    <string name="deliver_status">Status Pengiriman</string>
+    <string name="delivered">Pengiriman Selesai</string>
+    <string name="email_invalid">Email Tidak Valid</string>
+    <string name="email_used">Email Sudah Digunakan</string>
+    <string name="min_char_pw">"Minimal 6 Karakter"</string>
+    <string name="register_error">Terjadi kesalahan</string>
+    <string name="wrong_auth">Email atau Password Salah</string>
+    <string name="add_product">Tambah Produk Berhasil</string>
+    <string name="edit_product">Edit Produk Berhasil</string>
+    <string name="del_product">Hapus Produk Berhasil</string>
+
+    <string name="add_product_failed">Gagal Menambahkan Produk</string>
+
+    <string name="price_convert">Rp. %1$s/kg</string>
+    <string name="price_convert_order">Rp. %1$s</string>
+    <string name="date_convert">"%1$s, %2$s %3$s %4$s"</string>
+    <string name="price_rp">"Rp. %1$s"</string>
+    <string name="choose_picture">Choose a picture</string>
+    <string name="permission">Permission not granted</string>
+    <string name="no_order">Tidak ada pesanan</string>
+    <string name="account">Akun</string>
+    <string name="account_name">Account Name</string>
+    <string name="no_hp">No Hp</string>
+    <string name="sure_delete">Apakah anda yakin?</string>
+    <string name="sure_delete_sub">Anda akan menghapus produk ikan ini</string>
+    <string name="sure_logout">Apakah anda akan logout?</string>
+    <string name="sure_logout_sub">Anda akan logout dari akun ini</string>
+
+    <string name="img_empty">Foto tidak boleh kosong</string>
+    <string name="load_image">Memuat Foto...</string>
+    <string name="no_sell">Tidak ada jualan</string>
+    <string name="kirim_pesan">Kirim pesan</string>
+    <string name="pesan">Pesan</string>
+    <string name="daftar_pesan">Daftar Pesan</string>
+    <string name="Pesan">Pesan</string>
+    <string name="pesan_terakhir">Pesan terakhir</string>
+    <string name="time">Time</string>
+    <string name="unread">0</string>
+    <string name="wa_to">WhatsApp ke</string>
+    <string name="number">6285903820412</string>
+    <string name="sub_otp">Kami akan mengirimkan kode verifikasi ke WhatsApp anda</string>
+    <string name="title_otp">Kirim kode verifikasi</string>
+    <string name="message">message</string>
+    <string name="code">00000</string>
+    <string name="resend_code">Kirim ulang kode</string>
+    <string name="verify_code">Verifikasi</string>
+    <string name="waiting_code">Tunggu dalam %s detik untuk kirim ulang</string>
+    <string name="sub_verify">Kode verifikasi telah dikirimkan melalui WhatsApp ke</string>
+    <string name="title_verify">Masukkan Kode Verifikasi</string>
+    <string name="wrong_code">Kode verifikasi salah</string>
+    <string name="next">Selanjutnya</string>
+    <string name="format">Masukkan nomor sesuai dengan \nformat yang ada</string>
+    <string name="enter_no">Masukkan Nomor</string>
+    <string name="title_enter_no">Daftar dengan nomor \nWhatsApp</string>
+    <string name="wrong_no_format">Format nomor salah</string>
+    <string name="log_in_dengan_google">Log In dengan Google</string>
+    <string name="or">ATAU</string>
+
+    <string name="select_address">Pilih</string>
+    <string name="my_current_location">Lokasi saya sekarang</string>
+    <string name="address_is_required">Alamat lengkap harus diisi</string>
+
+    <!--    update string-->
+    <string name="content_update">"Fisku merekomendasikan anda untuk menggunakan aplikasi terbaru"</string>
+    <string name="title_update">"Update Fishku"</string>
+    <string name="later">"Nanti saja"</string>
+    <string name="update">"update"</string>
+    <string name="err_update">"Aplikasi tidak ditemukan"</string>
+    <string name="something_wrong">Terjadi Kesalahan coba lagi</string>
+    <string name="hubungkan_akun">Hubungkan Akun</string>
+    <string name="google">Link ke Google</string>
+    <string name="login_to_linked">Anda belum menghubungkan akun ini</string>
+    <string name="no_chat">Tidak ada percakapan</string>
+    <string name="get_your_address">Get your address</string>
+
+
+    <!--    days-->
+    <string-array name="sunday">
+        <item>Sunday</item>
+        <item>Minggu</item>
+    </string-array>
+    <string-array name="monday">
+        <item>Monday</item>
+        <item>Senin</item>
+    </string-array>
+    <string-array name="tuesday">
+        <item>Tuesday</item>
+        <item>Selasa</item>
+    </string-array>
+    <string-array name="wednesday">
+        <item>Wednesday</item>
+        <item>Rabu</item>
+    </string-array>
+    <string-array name="thursday">
+        <item>Thursday</item>
+        <item>Kamis</item>
+    </string-array>
+    <string-array name="friday">
+        <item>Friday</item>
+        <item>Jum\'at</item>
+    </string-array>
+    <string-array name="saturday">
+        <item>Saturday</item>
+        <item>Sabtu</item>
+    </string-array>
+
+    <string-array name="roles_array">
+        <item>Nelayan</item>
+        <item>Penjual Ikan</item>
+        <item>Pembudidayaan Ikan</item>
+        <item>Lain-lain</item>
+    </string-array>
+
+    <string-array name="day_of_weak">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+    <string name="title_activity_address">AddressActivity</string>
+    <string name="delivery_location">Lokasi pengiriman</string>
+    <string name="tpi_address">Jl. Sidik Harun, Ujungbatu III, Ujungbatu, Kec. Jepara, Kabupaten Jepara, Jawa Tengah</string>
+
+</resources>

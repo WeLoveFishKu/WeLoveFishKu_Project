@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".checkout.CheckoutActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/container_checkout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:elevation="1dp"
+                app:liftOnScroll="true">
+
+                <com.google.android.material.appbar.MaterialToolbar
+                    android:id="@+id/toolbar_checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    app:navigationIcon="@drawable/ic_back_blue"
+                    app:title="@string/title_order"
+                    app:titleCentered="true"
+                    app:titleTextAppearance="@style/Text.SemiBold.Big"
+                    app:titleTextColor="@color/blue" />
+
+                <com.google.android.material.divider.MaterialDivider
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:dividerColor="@color/grey_10" />
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_order_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_order_checkout" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                app:dividerColor="@color/grey" />
+
+            <TextView
+                style="@style/Text.Medium.Medium"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/courier"
+                android:textColor="@color/black" />
+
+            <RadioGroup
+                android:id="@+id/rg_courier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp">
+
+                <RadioButton
+                    android:id="@+id/rb_fishku_express"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_fishku_express"
+                    android:drawablePadding="10dp"
+                    android:layoutDirection="rtl"
+                    android:text="@string/fishku_express"
+                    android:textAlignment="textStart"
+                    android:textAppearance="@style/Text.Regular.Medium" />
+
+                <RadioButton
+                    android:id="@+id/rb_take"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableEnd="@drawable/ic_take_itself"
+                    android:drawablePadding="10dp"
+                    android:layoutDirection="rtl"
+                    android:text="@string/take_it_by_yourself"
+                    android:textAlignment="textStart"
+                    android:textAppearance="@style/Text.Regular.Medium" />
+            </RadioGroup>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/grey" />
+
+            <LinearLayout
+                android:id="@+id/btn_get_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:weightSum="1">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Text.Medium.Medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/address"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_address_checkout"
+                        style="@style/Text.Regular.Medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/address"
+                        android:textColor="@color/black"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="0"
+                    android:src="@drawable/ic_arrow_next" />
+            </LinearLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                app:dividerColor="@color/grey" />
+
+            <TextView
+                style="@style/Text.Medium.Medium"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/note" />
+
+            <EditText
+                android:id="@+id/edt_note_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:hint="@string/add_note"
+                android:inputType="textMultiLine"
+                android:textAppearance="@style/Text.Regular.Medium"
+                tools:ignore="Autofill" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/grey" />
+
+            <TextView
+                style="@style/Text.Medium.Medium"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/detail"
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/subtotal_product"
+                    android:textColor="@color/md_theme_light_outline" />
+
+                <TextView
+                    android:id="@+id/tv_subtotal_product"
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="wrap_content"
+                    android:text="@string/fish_price"
+                    android:textColor="@color/md_theme_light_outline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/subtotal_delivery"
+                    android:textColor="@color/md_theme_light_outline" />
+
+                <TextView
+                    android:id="@+id/tv_subtotal_delivery"
+                    style="@style/Text.Regular.Medium"
+                    android:layout_width="wrap_content"
+                    android:text="@string/fish_price"
+                    android:textColor="@color/md_theme_light_outline" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/Text.Medium.Big"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/price_total"
+                    android:textColor="@color/blue" />
+
+                <TextView
+                    android:id="@+id/tv_total_checkout"
+                    style="@style/Text.Medium.Big"
+                    android:layout_width="wrap_content"
+                    android:text="@string/fish_price"
+                    android:textColor="@color/blue" />
+            </LinearLayout>
+            <!-- TODO: Remove warning text -->
+            <TextView
+                style="@style/Text.Regular.Big.Center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@color/warning_stroke_color"
+                android:padding="16dp"
+                android:text="@string/payment_warning" />
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="6dp"
+                android:layout_marginTop="16dp"
+                app:dividerColor="@color/grey" />
+
+            <Button
+                android:id="@+id/btn_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_button"
+                android:text="@string/order"
+                android:textAppearance="@style/Text.Regular.Medium"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loading_checkout"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="loading.json"
+            app:lottie_loop="true" />
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>

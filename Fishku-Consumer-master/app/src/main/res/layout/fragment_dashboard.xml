@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/m3_bottom_nav_min_height"
+    android:scrollbars="none"
+    tools:context=".dashboard.DashboardFragment"
+    tools:ignore="PrivateResource">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:liftOnScroll="true">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                app:menu="@menu/dashboard_menu"
+                app:title="@string/buy_fish"
+                app:titleCentered="true"
+                app:titleTextAppearance="@style/Text.SemiBold.Big"
+                app:titleTextColor="@color/blue" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_view_fish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:background="@drawable/bg_search_view"
+            app:defaultQueryHint="@string/search_hint"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appbar_dashboard"
+            app:queryBackground="@android:color/transparent" />
+
+        <ImageView
+            android:id="@+id/iv_highlight_1"
+            android:layout_width="342dp"
+            android:layout_height="120dp"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:contentDescription="@string/banner_discount"
+            android:src="@drawable/img_banner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tv_best_product"
+            app:layout_constraintTop_toBottomOf="@id/search_view_fish" />
+
+        <TextView
+            android:id="@+id/tv_best_product"
+            style="@style/Text.Regular.Header"
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:text="@string/produk_terbaik"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_highlight_1" />
+
+        <TextView
+            android:id="@+id/btn_show_all_best"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:text="@string/lihat_semua"
+            android:textAppearance="@style/Text.Regular.Subheader"
+            app:layout_constraintBottom_toBottomOf="@id/tv_best_product"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_best_product" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_best_product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_best_product"
+            tools:listitem="@layout/item_fish_product" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/loading_best_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_best_product">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
+            android:id="@+id/tv_best_product_empty"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="wrap_content"
+            android:text="@string/product_empty"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/loading_best_product"
+            app:layout_constraintEnd_toEndOf="@id/loading_best_product"
+            app:layout_constraintStart_toStartOf="@id/loading_best_product"
+            app:layout_constraintTop_toTopOf="@id/loading_best_product" />
+
+        <TextView
+            android:id="@+id/tv_recommendation"
+            style="@style/Text.Regular.Header"
+            android:layout_width="wrap_content"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:text="@string/recommendation"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_best_product" />
+
+        <TextView
+            android:id="@+id/btn_show_all_recommendation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:text="@string/lihat_semua"
+            android:textAppearance="@style/Text.Regular.Subheader"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recommendation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_recommendation" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recommendation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommendation"
+            tools:listitem="@layout/item_fish_product" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/loading_recommend_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="12dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_recommendation">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+
+                    <include layout="@layout/item_card_placeholder" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <TextView
+            android:id="@+id/tv_recommend_product_empty"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="wrap_content"
+            android:text="@string/product_empty"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/loading_recommend_product"
+            app:layout_constraintEnd_toEndOf="@id/loading_recommend_product"
+            app:layout_constraintStart_toStartOf="@id/loading_recommend_product"
+            app:layout_constraintTop_toTopOf="@id/loading_recommend_product" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,59 @@
+<resources>
+    <string name="date_convert">"%1$s, %2$s %3$s %4$s"</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+    <!--    days-->
+    <string-array name="sunday">
+        <item>Sunday</item>
+        <item>Minggu</item>
+    </string-array>
+    <string-array name="monday">
+        <item>Monday</item>
+        <item>Senin</item>
+    </string-array>
+    <string-array name="tuesday">
+        <item>Tuesday</item>
+        <item>Selasa</item>
+    </string-array>
+    <string-array name="wednesday">
+        <item>Wednesday</item>
+        <item>Rabu</item>
+    </string-array>
+    <string-array name="thursday">
+        <item>Thursday</item>
+        <item>Kamis</item>
+    </string-array>
+    <string-array name="friday">
+        <item>Friday</item>
+        <item>Jum\'at</item>
+    </string-array>
+    <string-array name="saturday">
+        <item>Saturday</item>
+        <item>Sabtu</item>
+    </string-array>
+
+    <string-array name="roles_array">
+        <item>Nelayan</item>
+        <item>Penjual Ikan</item>
+        <item>Pembudidayaan Ikan</item>
+        <item>Lain-lain</item>
+    </string-array>
+
+    <string-array name="day_of_weak">
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+    </string-array>
+
+    <!--    update string-->
+    <string name="content_update">"Fisku merekomendasikan anda untuk menggunakan aplikasi terbaru"</string>
+    <string name="title_update">"Update Fishku"</string>
+    <string name="later">"Nanti saja"</string>
+    <string name="update">"update"</string>
+    <string name="err_update">"Aplikasi tidak ditemukan"</string>
+
+</resources>

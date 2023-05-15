@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">FI$HKU</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Masuk</string>
+    <string name="enter_email_and_password">Masukan email dan kata sandi</string>
+    <string name="email">Email</string>
+    <string name="password">Kata sandi</string>
+    <string name="forgot_password">Lupa kata sandi?</string>
+    <string name="dont_have_account">Tidak punya akun?</string>
+    <string name="register_here">Daftar disini</string>
+    <string name="email_cannot_be_empty">Email tidak boleh kosong</string>
+    <string name="invalid_email_format">Format email tidak sesuai</string>
+    <string name="password_cannot_be_empty">Password tidak boleh kosong</string>
+    <string name="create_account">Buat Akun</string>
+    <string name="enter_data">Masukkan data untuk membuat akun</string>
+    <string name="register">Bergabung</string>
+    <string name="login_here">Masuk disini</string>
+    <string name="name">Nama</string>
+    <string name="phone_number">Nomer Telepon</string>
+    <string name="address">Alamat</string>
+    <string name="agreement">Dengan melanjutkan, Anda menyetujui Persyaratan Layanan kami dan Kebijakan Privasi.</string>
+    <string name="have_account">Sudah punya akun?</string>
+    <string name="phone_cannot_be_empty">Nomer telepon tidak boleh kosong</string>
+    <string name="invalid_phone_format">Format nomer telepon tidak sesuai</string>
+    <string name="name_cannot_be_empty">Nama tidak boleh kosong</string>
+    <string name="address_cannot_be_empty">Alamat tidak boleh kosong</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_detection">Deteksi</string>
+    <string name="title_dashboard">Beranda</string>
+    <string name="title_market">Pasar</string>
+    <string name="title_account">Akun</string>
+    <string name="logout">Keluar</string>
+    <string name="desc_edit_profile">Tombol edit profil</string>
+    <string name="tab_order">Pesanan</string>
+    <string name="tab_order_history">Riwayat Pesanan</string>
+    <string name="logout_message">Ingin keluar dari akun ini?</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Ya</string>
+    <string name="search_hint">Search</string>
+    <string name="banner_discount">Banner Discount</string>
+    <string name="produk_terbaik">Produk Terbaik</string>
+    <string name="lihat_semua">Lihat semua</string>
+    <string name="kg">/kg</string>
+    <string name="product_photo">Foto product</string>
+    <string name="fish_name">Ikan Tuna</string>
+    <string name="price">Rp90.000</string>
+    <string name="default_amount">1</string>
+    <string name="weight">Kg</string>
+    <string name="minus_amount">tombol kurangi jumlah</string>
+    <string name="add_amount">tombol menambah jumlah</string>
+    <string name="apply">Terapkan</string>
+    <string name="dummy_date">Senin, 7 Agustus 2022</string>
+    <string name="dummy_status">Waiting</string>
+    <string name="detail">Rincian</string>
+    <string name="track">Lacak</string>
+    <string name="select_fish">Pilih Ikan</string>
+    <string name="invoice">Invoice</string>
+
+    <!--    update string-->
+    <string name="content_update">"Fisku merekomendasikan anda untuk menggunakan aplikasi terbaru"</string>
+    <string name="title_update">"Update Fishku"</string>
+    <string name="later">"Nanti saja"</string>
+    <string name="update">"update"</string>
+    <string name="err_update">"Aplikasi tidak ditemukan"</string>
+</resources>

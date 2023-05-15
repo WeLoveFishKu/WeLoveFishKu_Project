@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_dashboard">
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="id.fishku.consumer.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <action
+            android:id="@+id/action_navigation_dashboard_to_searchActivity"
+            app:destination="@id/searchActivity" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_detailFishActivity"
+            app:destination="@id/detailFishActivity" />
+        <action
+            android:id="@+id/action_navigation_dashboard_to_cartActivity"
+            app:destination="@id/cartActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_choose_fish"
+        android:name="id.fishku.consumer.detection.ChooseFishFragment"
+        android:label="@string/title_detection"
+        tools:layout="@layout/fragment_choose_fish">
+        <action
+            android:id="@+id/action_navigation_choose_fish_to_detectionFishActivity"
+            app:destination="@id/detectionFishActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_market"
+        android:name="id.fishku.consumer.market.MarketFragment"
+        android:label="@string/title_market"
+        tools:layout="@layout/fragment_market">
+        <action
+            android:id="@+id/action_navigation_market_to_searchActivity"
+            app:destination="@id/searchActivity" />
+        <action
+            android:id="@+id/action_navigation_market_to_detailFishActivity"
+            app:destination="@id/detailFishActivity" />
+        <action
+            android:id="@+id/action_navigation_market_to_cartActivity"
+            app:destination="@id/cartActivity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_account"
+        android:name="id.fishku.consumer.account.AccountFragment"
+        android:label="@string/title_account"
+        tools:layout="@layout/fragment_account" />
+    <activity
+        android:id="@+id/searchActivity"
+        android:name="id.fishku.consumer.search.SearchActivity"
+        android:label="activity_search"
+        tools:layout="@layout/activity_search">
+        <argument
+            android:name="query"
+            app:argType="string"
+            app:nullable="true" />
+    </activity>
+    <activity
+        android:id="@+id/detailFishActivity"
+        android:name="id.fishku.consumer.detailfish.DetailFishActivity"
+        android:label="activity_detail_fish"
+        tools:layout="@layout/activity_detail_fish">
+        <argument
+            android:name="fishID"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </activity>
+    <activity
+        android:id="@+id/cartActivity"
+        android:name="id.fishku.consumer.cart.CartActivity"
+        android:label="activity_cart"
+        tools:layout="@layout/activity_cart" />
+    <activity
+        android:id="@+id/detectionFishActivity"
+        android:name="id.fishku.consumer.detection.DetectionFishActivity"
+        android:label="activity_detection_fish"
+        tools:layout="@layout/activity_detection_fish">
+        <argument
+            android:name="fishName"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="fishPart"
+            app:argType="string"
+            app:nullable="true" />
+    </activity>
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="id.fishku.consumer.livechat.LiveChatFragment"
+        android:label="fragment_live_chat"
+        tools:layout="@layout/fragment_live_chat" />
+</navigation>

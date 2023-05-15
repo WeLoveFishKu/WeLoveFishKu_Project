@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#DADADA">
+    <item android:id="@android:id/mask">
+        <shape android:shape="rectangle">
+            <solid android:color="#DADADA"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <vector
+            android:width="32dp"
+            android:height="32dp"
+            android:viewportWidth="32"
+            android:viewportHeight="32">
+            <path
+                android:fillColor="#FF0C7DBF"
+                android:pathData="M8.74 6.67c-1.15 0-2.07 0.92-2.07 2.07v14.52c0 0.55 0.22 1.08 0.6 1.47 0.4 0.38 0.92 0.6 1.47 0.6h14.52c0.55 0 1.08-0.22 1.47-0.6 0.38-0.4 0.6-0.92 0.6-1.47V16h-2.07v7.26H8.74V8.74H16V6.67H8.74ZM22 7.7c-0.18 0-0.36 0.08-0.5 0.21l-1.26 1.26 2.6 2.59 1.26-1.26c0.27-0.27 0.27-0.72 0-0.98l-1.6-1.6c-0.14-0.14-0.32-0.22-0.5-0.22Zm-2.5 2.2l-7.64 7.66v2.59h2.6l7.64-7.66-2.6-2.59Z"/>
+        </vector>
+    </item>
+</ripple>

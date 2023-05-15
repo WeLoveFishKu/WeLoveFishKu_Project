@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingVertical="24dp">
+
+    <CheckBox
+        android:id="@+id/placeholder_checkbox_cart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/placeholder_img_photo_cart"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:contentDescription="@string/product_photo"
+        android:src="@color/grey_10"
+        app:layout_constraintStart_toEndOf="@+id/placeholder_checkbox_cart"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/placeholder_tv_name_cart"
+        style="@style/Text.Medium.Big"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_text_placeholder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/placeholder_img_photo_cart"
+        app:layout_constraintTop_toTopOf="@+id/placeholder_img_photo_cart" />
+
+    <TextView
+        android:id="@+id/placeholder_tv_price_cart"
+        style="@style/Text.Regular.Big"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:width="100dp"
+        android:background="@drawable/bg_text_placeholder"
+        app:layout_constraintStart_toEndOf="@+id/placeholder_img_photo_cart"
+        app:layout_constraintTop_toBottomOf="@+id/placeholder_tv_name_cart" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,184 @@
+{
+  "project_info": {
+    "project_number": "735561181417",
+    "project_id": "fishku",
+    "storage_bucket": "fishku.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735561181417:android:279739cea36f923e1be878",
+        "android_client_info": {
+          "package_name": "id.fishku.consumer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZObE2CkRolF7PuhtLf53PUReuUaAC7Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735561181417:android:00d2231c63ea27cb1be878",
+        "android_client_info": {
+          "package_name": "id.fishku.consumer.core"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZObE2CkRolF7PuhtLf53PUReuUaAC7Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735561181417:android:5531fb862715e6c01be878",
+        "android_client_info": {
+          "package_name": "id.fishku.fisherseller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZObE2CkRolF7PuhtLf53PUReuUaAC7Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735561181417:android:b20289ee5adcc54e1be878",
+        "android_client_info": {
+          "package_name": "id.fishku.fisherseller.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZObE2CkRolF7PuhtLf53PUReuUaAC7Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735561181417:android:aeeb412f7972840a1be878",
+        "android_client_info": {
+          "package_name": "id.fishku.fisherseller.notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZObE2CkRolF7PuhtLf53PUReuUaAC7Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:735561181417:android:fb5e73ad8e5183991be878",
+        "android_client_info": {
+          "package_name": "id.fishku.fisherseller.seller"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZObE2CkRolF7PuhtLf53PUReuUaAC7Qc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "735561181417-kllcbp5oo65qikkji91j7pdit5su9uiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

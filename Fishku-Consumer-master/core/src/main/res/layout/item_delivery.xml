@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="16dp">
+
+    <com.github.vipulasri.timelineview.TimelineView
+        android:id="@+id/timeline"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:endLineColor="@color/blue"
+        app:linePadding="4dp"
+        app:lineWidth="2dp"
+        app:marker="@drawable/ic_marker_active"
+        app:markerSize="13dp"
+
+        app:startLineColor="@color/blue" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/item_tv_title_track"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/black"
+            tools:text="Sent by seller" />
+
+        <TextView
+            android:id="@+id/item_tv_content_track"
+            style="@style/Text.Regular.Small"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            tools:text="order 342320823 has been sent by the seller on 12-04-2021, and received at the place of delivery of the package on 13-04-2021." />
+
+        <TextView
+            android:id="@+id/item_tv_date_track"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="@color/blue"
+            tools:text="16-07-2021 12.10 PM" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:paddingBottom="16dp"
+    android:scrollbars="none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_detail_placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:contentDescription="@string/image_photo"
+            android:scaleType="centerCrop"
+            android:src="@color/grey_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_detail_placeholder1"
+            style="@style/Text.SemiBold.Medium"
+            android:layout_width="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_text_placeholder"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/tv_detail_placeholder2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_detail_placeholder" />
+
+        <TextView
+            android:id="@+id/tv_detail_placeholder2"
+            style="@style/Text.Regular.Small"
+            android:layout_width="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_text_placeholder"
+            android:padding="8dp"
+            android:text="@string/available_weight"
+            android:textColor="@color/grey_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_detail_placeholder" />
+
+        <TextView
+            android:id="@+id/tv_detail_placeholder3"
+            style="@style/Text.Medium.Big"
+            android:layout_width="170dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text_placeholder"
+            android:textColor="@color/blue"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_placeholder1"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_placeholder1" />
+
+        <TextView
+            android:id="@+id/edt_detail_placeholder1"
+            style="@style/Text.Medium.Big"
+            android:layout_width="100dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_text_placeholder"
+            android:textColor="@color/blue"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_placeholder1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_placeholder3" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_detail_placeholder2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:src="@color/grey_10"
+            app:layout_constraintStart_toStartOf="@+id/tv_detail_placeholder1"
+            app:layout_constraintTop_toBottomOf="@+id/edt_detail_placeholder1" />
+
+        <TextView
+            android:id="@+id/tv_detail_placeholder4"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="100dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_text_placeholder"
+            app:layout_constraintBottom_toBottomOf="@+id/img_detail_placeholder2"
+            app:layout_constraintStart_toEndOf="@+id/img_detail_placeholder2"
+            app:layout_constraintTop_toTopOf="@+id/img_detail_placeholder2" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            app:dividerColor="@color/grey_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_detail_placeholder2" />
+
+        <TextView
+            android:id="@+id/tv_detail_placeholder5"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="120dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_text_placeholder"
+            app:layout_constraintStart_toStartOf="@+id/materialDivider"
+            app:layout_constraintTop_toBottomOf="@id/materialDivider" />
+
+        <TextView
+            android:id="@+id/tv_detail_placeholder6"
+            style="@style/Text.Regular.Medium"
+            android:layout_width="0dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_text_placeholder"
+            android:textColor="@color/md_theme_light_outline"
+            app:layout_constraintEnd_toEndOf="@id/materialDivider"
+            app:layout_constraintStart_toStartOf="@+id/materialDivider"
+            app:layout_constraintTop_toBottomOf="@id/tv_detail_placeholder5" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/materialDivider2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:dividerColor="@color/grey_10"
+            app:layout_constraintEnd_toEndOf="@id/materialDivider"
+            app:layout_constraintStart_toStartOf="@id/materialDivider"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_placeholder6" />
+
+        <TextView
+            android:id="@+id/tv_detail_placeholder7"
+            style="@style/Text.Medium.Medium"
+            android:layout_width="100dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_text_placeholder"
+            app:layout_constraintStart_toStartOf="@id/materialDivider"
+            app:layout_constraintTop_toBottomOf="@id/materialDivider2" />
+
+        <TextView
+            android:id="@+id/btn_detail_placeholder"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/bg_text_placeholder"
+            app:layout_constraintEnd_toEndOf="@id/materialDivider"
+            app:layout_constraintStart_toStartOf="@id/materialDivider"
+            app:layout_constraintTop_toBottomOf="@+id/tv_detail_placeholder7" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

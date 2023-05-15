@@ -1,0 +1,19 @@
+steps:
+
+
+  # Connect to GCS Bucket
+- name: 'gcr.io/cloud-builders/gsutil'
+  args: ['cp', 'gs://model-ml-fishku/*.h5', '.']
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/fishku-project-093/flask-dev:0', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/fishku-project-093/flask-dev:0']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'flask-dev', '--image', 'gcr.io/fishku-project-093/flask-dev:0', '--region', 'asia-southeast2']
+images:
+- gcr.io/fishku-project-093/flask-dev:0
+
