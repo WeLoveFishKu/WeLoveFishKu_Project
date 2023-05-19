@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello_figo_akmal">hello_user</string>
+    <string name="date_dummy">Senin, 17 Apr</string>
+    <string name="wind_dummy">12 m/s</string>
+    <string name="flow_dummy">Ombak laut sedang tinggi (12 m)</string>
+    <string name="placeholder">disini kamu bisa liat uang mu</string>
 </resources>
