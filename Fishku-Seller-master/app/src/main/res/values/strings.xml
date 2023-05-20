@@ -177,11 +177,20 @@
     <string name="delivery_location">Lokasi pengiriman</string>
     <string name="tpi_address">Jl. Sidik Harun, Ujungbatu III, Ujungbatu, Kec. Jepara, Kabupaten Jepara, Jawa Tengah</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello">Hello , Figo Akmal</string>
+    <string name="hello">Hello, %1$s!</string>
     <string name="date_dummy">Senin, 17 Apr</string>
     <string name="weather_dummy">31C</string>
     <string name="wind_dummy">12 m/s</string>
     <string name="flow_dummy">Ombak laut sedang tinggi (12 m)</string>
     <string name="placeholder">disini kamu bisa liat uang mu</string>
+    <string name="wd">Withdraw</string>
+    <string name="jual_ikan">Jual Ikan</string>
+    <string name="budget_overview">Budget Overview</string>
+    <string name="my_budget">My Budget</string>
+    <string name="riwayat_pendapat">Riwayat Pendapat</string>
+    <string name="_2000_00">$2000,00</string>
+    <string name="_1_600_00">$1.600,00</string>
+    <string name="_1_75">1,75%</string>
+    <string name="_5_kg">$5 / kg</string>
 
 </resources>

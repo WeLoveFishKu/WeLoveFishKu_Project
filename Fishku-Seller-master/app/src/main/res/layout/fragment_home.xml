@@ -11,15 +11,29 @@
     android:focusableInTouchMode="true"
     tools:context=".presentation.ui.home.HomeFragment">
 
+    <ImageButton
+        android:id="@+id/btn_add"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="14dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_action_add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <include layout="@layout/item_information_placeholder" />
 
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="76dp"
+        android:layout_height="493dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="168dp" />
+        app:layout_constraintGuide_begin="469dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_menu"
@@ -57,7 +71,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
 
             <include layout="@layout/item_menu_placeholder" />
 

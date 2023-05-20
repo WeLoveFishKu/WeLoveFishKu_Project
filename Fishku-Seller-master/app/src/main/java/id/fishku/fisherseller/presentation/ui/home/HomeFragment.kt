@@ -7,8 +7,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.widget.TextView.OnEditorActionListener
+import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -43,10 +42,14 @@ class HomeFragment : Fragment() {
 
     @Inject
     lateinit var prefs: SessionManager
+
     @Inject
     lateinit var pop: PopDialog
+
     @Inject
     lateinit var load: LottieLoading
+
+    private lateinit var tvName: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,8 +60,13 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val data = prefs.getUser()
+        tvName = view.findViewById(R.id.tv_user)
+        tvName.text = String.format(getString(R.string.hello), data.name)
 
         binding.home.setOnClickListener {
             binding.home.isFocusableInTouchMode = false
@@ -66,7 +74,7 @@ class HomeFragment : Fragment() {
         }
 
 
-        binding.btnAdd.setOnClickListener{
+        binding.btnAdd.setOnClickListener {
             val intent = Intent(requireActivity(), AddFActivity::class.java)
             startActivity(intent)
 //            val fire = FirebaseFirestore.getInstance()
@@ -92,65 +100,65 @@ class HomeFragment : Fragment() {
         menuAdapter.setOnDelClick {
             showDelDialog(it)
         }
-        binding.edtSearch.addTextChangedListener(afterTextChangedListener)
-        binding.edtSearch.setOnEditorActionListener(OnEditorActionListener { v, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                val textSearch = v.text.toString()
-                sendRequest(textSearch)
-                return@OnEditorActionListener true
-            }
-            false
-        })
-        binding.inputSearch.setEndIconOnClickListener {
-            sendRequest(searchText)
-        }
+//        binding.edtSearch.addTextChangedListener(afterTextChangedListener)
+//        binding.edtSearch.setOnEditorActionListener(OnEditorActionListener { v, actionId, _ ->
+//            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+//                val textSearch = v.text.toString()
+//                sendRequest(textSearch)
+//                return@OnEditorActionListener true
+//            }
+//            false
+//        })
+//        binding.inputSearch.setEndIconOnClickListener {
+//            sendRequest(searchText)
+//        }
         observableViewModel()
     }
 
-    private fun showDelDialog(data: MenuModel){
+    private fun showDelDialog(data: MenuModel) {
         pop.showDialog(requireContext(),
-            positive = {_,_ ->
+            positive = { _, _ ->
                 observableDelViewModel(data)
-        }, negative = {_,_->
+            }, negative = { _, _ ->
 
-        },
+            },
             title = getString(R.string.sure_delete),
             subTitle = getString(R.string.sure_delete_sub)
         )
     }
 
-    private fun observableDelViewModel(data: MenuModel){
-                    viewModel.deleteMenu(data.id_fish).observe(viewLifecycleOwner){ res ->
-                when(res.status){
-                    Status.LOADING -> {
+    private fun observableDelViewModel(data: MenuModel) {
+        viewModel.deleteMenu(data.id_fish).observe(viewLifecycleOwner) { res ->
+            when (res.status) {
+                Status.LOADING -> {
 
-                    }
-                    Status.ERROR -> {
+                }
+                Status.ERROR -> {
 
-                    }
-                    Status.SUCCESS ->{
-                        binding.root.mySnackBar(getString(R.string.del_product), R.color.green)
-                        observableViewModel()
-                    }
+                }
+                Status.SUCCESS -> {
+                    binding.root.mySnackBar(getString(R.string.del_product), R.color.green)
+                    observableViewModel()
                 }
             }
+        }
     }
 
-    private fun sendRequest(textSearch: String){
+    private fun sendRequest(textSearch: String) {
         observableSearchViewModel(textSearch)
     }
 
-    private fun observableViewModel(){
+    private fun observableViewModel() {
         val idSeller = prefs.getUser().id
-        viewModel.getListFish(idSeller!!).observe(viewLifecycleOwner){res ->
-            when(res.status){
-               Status.LOADING -> {
+        viewModel.getListFish(idSeller!!).observe(viewLifecycleOwner) { res ->
+            when (res.status) {
+                Status.LOADING -> {
                     loading(true)
                 }
                 Status.ERROR -> {
                     loading(false)
                 }
-                Status.SUCCESS ->{
+                Status.SUCCESS -> {
                     loading(false)
                     val empty = res.data?.banyak
                     if (empty == 0)
@@ -162,16 +170,16 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun loading(isLoading: Boolean){
+    private fun loading(isLoading: Boolean) {
         if (isLoading)
             binding.shimmerLoading.visibility = View.VISIBLE
         else
             binding.shimmerLoading.visibility = View.GONE
     }
 
-    private fun observableSearchViewModel( textSearch: String){
+    private fun observableSearchViewModel(textSearch: String) {
         val searchText = textSearch.capitalizeWords()
-        val search = menuList.filter{it.name.contains(searchText)}
+        val search = menuList.filter { it.name.contains(searchText) }
         println(search)
         menuAdapter.submitList(search)
     }
@@ -180,10 +188,12 @@ class HomeFragment : Fragment() {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             // ignore
         }
+
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-           _searchText = s.toString()
+            _searchText = s.toString()
             sendRequest(s.toString())
         }
+
         override fun afterTextChanged(s: Editable) {
             // ignore
 

@@ -3,6 +3,7 @@ package id.fishku.fisherseller.presentation.ui.otp
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -63,6 +64,8 @@ class VerifyOTPActivity : AppCompatActivity() {
         _binding = ActivityVerifyOtpactivityBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
+
+        Log.e("VerifyOTPActivity", "onCreate: ${otpArgs?.user?.phone_number}" )
 
         binding.btnVerify.setOnClickListener {
             loadCheckCode()
