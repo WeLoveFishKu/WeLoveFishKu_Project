@@ -1,22 +1,28 @@
 package id.fishku.fisherseller.presentation.ui.home
 
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.FragmentHomeBinding
 import id.fishku.fisherseller.otp.core.Status
 import id.fishku.fisherseller.presentation.ui.add.AddFActivity
+import id.fishku.fisherseller.presentation.ui.maps.MapsActivity
+import id.fishku.fisherseller.presentation.ui.maps.MapsFragment
 import id.fishku.fisherseller.seller.services.SessionManager
 import id.fishku.fishersellercore.model.MenuModel
 import id.fishku.fishersellercore.util.Constants
@@ -50,6 +56,8 @@ class HomeFragment : Fragment() {
     lateinit var load: LottieLoading
 
     private lateinit var tvName: TextView
+    private lateinit var btnAdd: Button
+    private lateinit var btnMaps: ImageButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,13 +76,20 @@ class HomeFragment : Fragment() {
         tvName = view.findViewById(R.id.tv_user)
         tvName.text = String.format(getString(R.string.hello), data.name)
 
+
         binding.home.setOnClickListener {
             binding.home.isFocusableInTouchMode = false
             binding.root.hideKeyboard()
         }
 
+        btnMaps = view.findViewById(R.id.btn_map)
+        btnMaps.setOnClickListener {
+            val intent = Intent(requireActivity(), MapsActivity::class.java)
+            startActivity(intent)
+        }
 
-        binding.btnAdd.setOnClickListener {
+        btnAdd = view.findViewById(R.id.btn_sell)
+        btnAdd.setOnClickListener {
             val intent = Intent(requireActivity(), AddFActivity::class.java)
             startActivity(intent)
 //            val fire = FirebaseFirestore.getInstance()

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".presentation.ui.auth.RegisterActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/white"
+            android:contentDescription="@string/back"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:src="@drawable/ic_action_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView27"
+            style="@style/Text.SemiBold.Big"
+            android:layout_marginTop="75dp"
+            android:text="@string/create_account"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
+            android:gravity="center"
+            android:text="Pembeli"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="134dp"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-170dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:text="Penjual"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.572"
+            app:layout_constraintStart_toEndOf="@+id/switch1"
+            app:layout_constraintTop_toTopOf="@+id/switch1" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/edit_text_background"
+            android:drawableLeft="@drawable/facebook"
+            android:drawablePadding="@dimen/activity_horizontal_margin"
+            android:text="Daftarkan Dengan Facebook"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:drawableLeft="@drawable/common_google_signin_btn_icon_dark"
+            android:drawablePadding="@dimen/activity_horizontal_margin"
+            android:text="Daftarkan Dengan Google"
+            app:layout_constraintEnd_toEndOf="@+id/button"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/button"
+            android:background="@drawable/edit_text_background"/>
+
+        <TextView
+            android:id="@+id/textView29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="ATAU"
+            app:layout_constraintEnd_toEndOf="@+id/button2"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/button2"
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="140dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toStartOf="@+id/textView29"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="140dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="32dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView29"
+            app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView29"
+            android:hint="@string/nama_lengkap"/>
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress2"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress3"
+            android:hint="@string/passwordED"/>
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress3"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edit_text_background"
+            android:ems="10"
+            android:inputType="textEmailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress"
+            android:hint="@string/e_mail"/>
+
+        <TextView
+            android:id="@+id/textView31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Apakah Kamu Seorang Nelayan?"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress2"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Iya"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Bergabung"
+            android:background="@drawable/edit_text_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switch2" />
+
+        <TextView
+            android:id="@+id/textView32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-4dp"
+            android:layout_marginTop="5dp"
+            android:text="Bukan"
+            app:layout_constraintStart_toEndOf="@+id/switch2"
+            app:layout_constraintTop_toTopOf="@+id/switch2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

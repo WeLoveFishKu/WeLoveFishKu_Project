@@ -192,5 +192,11 @@
     <string name="_1_600_00">$1.600,00</string>
     <string name="_1_75">1,75%</string>
     <string name="_5_kg">$5 / kg</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="e_mail">E-mail</string>
+    <string name="passwordED">Password</string>
+    <string name="check">check</string>
+    <string name="title_activity_maps">MapsActivity</string>
+
 
 </resources>

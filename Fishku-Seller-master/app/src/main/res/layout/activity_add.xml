@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:focusable="false"
     android:focusableInTouchMode="true"
-    android:background="@color/white"
     tools:context=".presentation.ui.add.AddFActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
         android:focusable="false"
-        android:focusableInTouchMode="true">
+        android:focusableInTouchMode="true"
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/btn_back"
@@ -41,10 +40,10 @@
             android:textColor="@color/blue"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:titleTextAppearance="@style/Text.SemiBold.Big"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:titleTextAppearance="@style/Text.SemiBold.Big" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/item_img"
@@ -52,14 +51,14 @@
             android:layout_height="74dp"
             android:layout_marginStart="16dp"
             android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
             android:maxWidth="74dp"
             android:maxHeight="74dp"
             android:scaleType="centerCrop"
-            app:srcCompat="@drawable/ic_action_add_image"
-            android:contentDescription="@string/app_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline4"
             app:shapeAppearanceOverlay="@style/roundedImageView"
+            app:srcCompat="@drawable/ic_action_add_image"
             tools:srcCompat="@tools:sample/avatars" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -83,12 +82,12 @@
 
         <TextView
             android:id="@+id/tv_edit"
+            style="@style/Text.Regular.Big"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/edit_photo"
             android:textColor="@color/blue"
-            style="@style/Text.Regular.Big"
             app:layout_constraintStart_toStartOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -120,8 +119,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_name"
-                android:inputType="textCapSentences"
-                style="@style/TextInput" />
+                style="@style/TextInput"
+                android:inputType="textCapSentences" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -146,8 +145,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_price"
-                android:inputType="textCapSentences"
-                style="@style/TextInput" />
+                style="@style/TextInput"
+                android:inputType="textCapSentences" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -173,8 +172,8 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_stock"
-                android:inputType="textCapSentences"
-                style="@style/TextInput" />
+                style="@style/TextInput"
+                android:inputType="textCapSentences" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -199,18 +198,17 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_desc"
-                android:inputType="textMultiLine"
-                style="@style/TextInput" />
+                style="@style/TextInput"
+                android:inputType="textMultiLine" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_add"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:background="@drawable/primary_button"
             android:padding="10dp"
             android:text="@string/save"
@@ -219,8 +217,29 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_input4" />
+            app:layout_constraintTop_toBottomOf="@+id/edt_input4"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <Button
+            android:id="@+id/btn_check"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/primary_button"
+            android:padding="10dp"
+            android:text="@string/check"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_add" />
 
         <TextView
             android:id="@+id/iv_empty"
@@ -233,6 +252,7 @@
             android:visibility="invisible"
             app:layout_constraintStart_toStartOf="@+id/item_img"
             app:layout_constraintTop_toBottomOf="@+id/item_img" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
