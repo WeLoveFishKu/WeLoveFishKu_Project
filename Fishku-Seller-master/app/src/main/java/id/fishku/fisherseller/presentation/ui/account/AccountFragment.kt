@@ -15,6 +15,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.FragmentAccountBinding
 import id.fishku.fisherseller.presentation.ui.auth.LoginActivity
+import id.fishku.fisherseller.presentation.ui.faq.Faq
 import id.fishku.fisherseller.seller.services.SessionManager
 import id.fishku.fishersellercore.core.ResourceState
 import id.fishku.fishersellercore.model.UserModel
@@ -37,8 +38,10 @@ class AccountFragment : Fragment() {
 
     @Inject
     lateinit var prefs: SessionManager
+
     @Inject
     lateinit var pop: id.fishku.fishersellercore.view.PopDialog
+
     @Inject
     lateinit var googleSignInClient: GoogleSignInClient
 
@@ -64,34 +67,53 @@ class AccountFragment : Fragment() {
         binding.btnGoogleSign.setOnClickListener {
             isUserLinkedGoogle()
         }
+        binding.fabQuestion.setOnClickListener {
+//            intent to FaqActivity::class.java
+            val intent = Intent(activity, Faq::class.java)
+            intent.putExtra("name", data.name)
+            intent.putExtra("email", data.email)
+            intent.putExtra("phone_number", data.phone_number)
+            startActivity(intent)
+        }
+
         setUpLinkedLogo()
     }
 
-    private fun logout(){
+    private fun logout() {
         showDelDialog()
     }
 
-    private fun setUpLinkedLogo(){
+    private fun setUpLinkedLogo() {
         val user = prefs.getUser()
-        viewModel.userIsLinked(user.email!!).observe(viewLifecycleOwner){
+        viewModel.userIsLinked(user.email!!).observe(viewLifecycleOwner) {
 
-            when(it){
+            when (it) {
                 is ResourceState.Loading -> {}
                 is ResourceState.Success -> {
-                    binding.btnGoogleSign.setCompoundDrawablesWithIntrinsicBounds(R.drawable.google,0,R.drawable.ic_action_close,0)
+                    binding.btnGoogleSign.setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.google,
+                        0,
+                        R.drawable.ic_action_close,
+                        0
+                    )
                 }
                 is ResourceState.Error -> {
-                    binding.btnGoogleSign.setCompoundDrawablesWithIntrinsicBounds(R.drawable.google,0,0,0)
+                    binding.btnGoogleSign.setCompoundDrawablesWithIntrinsicBounds(
+                        R.drawable.google,
+                        0,
+                        0,
+                        0
+                    )
                 }
             }
         }
     }
 
 
-    private fun isUserLinkedGoogle(){
+    private fun isUserLinkedGoogle() {
         val user = prefs.getUser()
-        viewModel.userIsLinked(user.email!!).observe(viewLifecycleOwner){
-            when(it){
+        viewModel.userIsLinked(user.email!!).observe(viewLifecycleOwner) {
+            when (it) {
                 is ResourceState.Loading -> {
 
                 }
@@ -132,7 +154,7 @@ class AccountFragment : Fragment() {
     private var resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                viewModel.signWithGoogle(result.data).observe(viewLifecycleOwner){
+                viewModel.signWithGoogle(result.data).observe(viewLifecycleOwner) {
                     val email = it.data?.email
                     linkedWithGoogle(email)
                     setUpLinkedLogo()
@@ -140,9 +162,9 @@ class AccountFragment : Fragment() {
             }
         }
 
-    private fun showDelDialog(){
+    private fun showDelDialog() {
         pop.showDialog(requireContext(),
-            positive = {_,_ ->
+            positive = { _, _ ->
                 lifecycleScope.launchWhenCreated {
                     prefs.logout()
                     viewModel.signOutWithGoogle(googleSignInClient)
@@ -150,7 +172,7 @@ class AccountFragment : Fragment() {
                     startActivity(Intent(requireActivity(), LoginActivity::class.java))
                     requireActivity().finish()
                 }
-            }, negative = {_,_->
+            }, negative = { _, _ ->
 
             },
             title = getString(R.string.sure_logout),

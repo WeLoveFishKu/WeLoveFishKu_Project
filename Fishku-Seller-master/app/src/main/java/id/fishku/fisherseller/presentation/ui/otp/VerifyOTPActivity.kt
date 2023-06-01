@@ -78,6 +78,11 @@ class VerifyOTPActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             back()
         }
+
+        binding.edtVerifyCode.setText(
+            saveToLocal.getCodeOtp().toString()
+        )
+
         init()
         startGenerateOtp()
         otpResponse()

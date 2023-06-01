@@ -117,4 +117,13 @@ class SessionManager(context: Context) {
         editor.clear()
         editor.apply()
     }
+
+    fun setLocation(latitude: Double, longitude: Double) {
+        val editor = prefs.edit()
+        editor.putString(LOCATION, "location")
+        editor.apply()
+    }
+
+    fun getLocation(): String =
+        prefs.getString(LOCATION, "").toString()
 }

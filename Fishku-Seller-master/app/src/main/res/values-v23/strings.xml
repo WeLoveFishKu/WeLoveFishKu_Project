@@ -10,8 +10,8 @@
     <string name="budget_overview">Budget Overview</string>
     <string name="my_budget">My Budget</string>
     <string name="riwayat_pendapat">Riwayat Pendapat</string>
-    <string name="_2000_00">$2000,00</string>
-    <string name="_1_600_00">$1.600,00</string>
+    <string name="_2000_00">Rp 2000.000</string>
+    <string name="_1_600_00">Rp 1.600.000</string>
     <string name="_1_75">1,75%</string>
-    <string name="_5_kg">$5 / kg</string>
+    <string name="_5_kg">35.000 / kg</string>
 </resources>

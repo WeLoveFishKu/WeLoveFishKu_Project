@@ -11,5 +11,4 @@ data class DetailOrderModel(
     val weight: String,
     val fish_price: String,
     val price: String
-
 )

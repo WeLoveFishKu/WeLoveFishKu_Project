@@ -1,28 +1,32 @@
 package id.fishku.fisherseller.presentation.ui.home
 
+import android.content.Context.LOCATION_SERVICE
 import android.content.Intent
-import android.media.Image
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.FragmentHomeBinding
 import id.fishku.fisherseller.otp.core.Status
 import id.fishku.fisherseller.presentation.ui.add.AddFActivity
 import id.fishku.fisherseller.presentation.ui.maps.MapsActivity
-import id.fishku.fisherseller.presentation.ui.maps.MapsFragment
 import id.fishku.fisherseller.seller.services.SessionManager
 import id.fishku.fishersellercore.model.MenuModel
 import id.fishku.fishersellercore.util.Constants
@@ -59,13 +63,16 @@ class HomeFragment : Fragment() {
     private lateinit var btnAdd: Button
     private lateinit var btnMaps: ImageButton
 
+    private lateinit var locationManager: LocationManager
+    private lateinit var locationListener: LocationListener
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
@@ -127,7 +134,46 @@ class HomeFragment : Fragment() {
 //        binding.inputSearch.setEndIconOnClickListener {
 //            sendRequest(searchText)
 //        }
+
+
         observableViewModel()
+        getMyLocation()
+
+        Log.e("Location", "onViewCreated: ${prefs.getLocation()}")
+    }
+
+    private val requestPermissionLauncher = registerForActivityResult(
+        ActivityResultContracts.RequestPermission()
+    ) { isGranted: Boolean ->
+        if (isGranted) {
+            getMyLocation()
+        }
+    }
+
+    private fun getMyLocation(){
+        locationManager = requireActivity().getSystemService(LOCATION_SERVICE) as LocationManager
+        locationListener = object : LocationListener {
+            override fun onLocationChanged(location: Location) {
+                Log.e("Location", "onLocationChanged: ${location.latitude}, ${location.longitude}")
+                prefs.setLocation(location.latitude, location.longitude)
+                locationManager.removeUpdates(this)
+            }
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (requireActivity().checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != android.content.pm.PackageManager.PERMISSION_GRANTED && requireActivity().checkSelfPermission(
+                    android.Manifest.permission.ACCESS_COARSE_LOCATION
+                ) != android.content.pm.PackageManager.PERMISSION_GRANTED
+            ) {
+                requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                return
+            }
+        }
+        locationManager.requestLocationUpdates(
+            LocationManager.GPS_PROVIDER,
+            5000,
+            0f,
+            locationListener
+        )
     }
 
     private fun showDelDialog(data: MenuModel) {
