@@ -179,7 +179,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello">Hello, %1$s!</string>
     <string name="date_dummy">Senin, 17 Apr</string>
-    <string name="weather_dummy">31C</string>
+    <string name="weather_dummy">%1sC</string>
     <string name="wind_dummy">12 m/s</string>
     <string name="flow_dummy">Ombak laut sedang tinggi (12 m)</string>
     <string name="placeholder">disini kamu bisa liat uang mu</string>

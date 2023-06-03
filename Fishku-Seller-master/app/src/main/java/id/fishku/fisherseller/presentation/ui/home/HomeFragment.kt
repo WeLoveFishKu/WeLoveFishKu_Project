@@ -1,22 +1,17 @@
 package id.fishku.fisherseller.presentation.ui.home
 
-import android.content.Context.LOCATION_SERVICE
 import android.content.Intent
-import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -25,8 +20,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.FragmentHomeBinding
 import id.fishku.fisherseller.otp.core.Status
+import id.fishku.fisherseller.presentation.ui.MainViewModelFactory
 import id.fishku.fisherseller.presentation.ui.add.AddFActivity
 import id.fishku.fisherseller.presentation.ui.maps.MapsActivity
+import id.fishku.fisherseller.presentation.ui.weathers.WeatherModel
 import id.fishku.fisherseller.seller.services.SessionManager
 import id.fishku.fishersellercore.model.MenuModel
 import id.fishku.fishersellercore.util.Constants
@@ -35,6 +32,11 @@ import id.fishku.fishersellercore.util.hideKeyboard
 import id.fishku.fishersellercore.util.mySnackBar
 import id.fishku.fishersellercore.view.LottieLoading
 import id.fishku.fishersellercore.view.PopDialog
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
+import java.time.temporal.ChronoField
+import java.util.*
 import javax.inject.Inject
 
 
@@ -49,6 +51,7 @@ class HomeFragment : Fragment() {
     private val menuList get() = _menuList ?: listOf()
     private lateinit var menuAdapter: MenuAdapter
     private val viewModel: HomeViewModel by viewModels()
+    private lateinit var weatherModel: WeatherModel
 
     @Inject
     lateinit var prefs: SessionManager
@@ -62,9 +65,9 @@ class HomeFragment : Fragment() {
     private lateinit var tvName: TextView
     private lateinit var btnAdd: Button
     private lateinit var btnMaps: ImageButton
-
-    private lateinit var locationManager: LocationManager
-    private lateinit var locationListener: LocationListener
+    private lateinit var tvWeather: TextView
+    private lateinit var tvWind: TextView
+    private lateinit var tvDate: TextView
 
 
     override fun onCreateView(
@@ -76,6 +79,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -83,6 +87,8 @@ class HomeFragment : Fragment() {
         tvName = view.findViewById(R.id.tv_user)
         tvName.text = String.format(getString(R.string.hello), data.name)
 
+        val factory = MainViewModelFactory(requireActivity().application)
+        weatherModel = factory.create(WeatherModel::class.java)
 
         binding.home.setOnClickListener {
             binding.home.isFocusableInTouchMode = false
@@ -137,44 +143,9 @@ class HomeFragment : Fragment() {
 
 
         observableViewModel()
-        getMyLocation()
-
-        Log.e("Location", "onViewCreated: ${prefs.getLocation()}")
+        observableWeathers()
     }
 
-    private val requestPermissionLauncher = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { isGranted: Boolean ->
-        if (isGranted) {
-            getMyLocation()
-        }
-    }
-
-    private fun getMyLocation(){
-        locationManager = requireActivity().getSystemService(LOCATION_SERVICE) as LocationManager
-        locationListener = object : LocationListener {
-            override fun onLocationChanged(location: Location) {
-                Log.e("Location", "onLocationChanged: ${location.latitude}, ${location.longitude}")
-                prefs.setLocation(location.latitude, location.longitude)
-                locationManager.removeUpdates(this)
-            }
-        }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (requireActivity().checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION) != android.content.pm.PackageManager.PERMISSION_GRANTED && requireActivity().checkSelfPermission(
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != android.content.pm.PackageManager.PERMISSION_GRANTED
-            ) {
-                requestPermissionLauncher.launch(android.Manifest.permission.ACCESS_FINE_LOCATION)
-                return
-            }
-        }
-        locationManager.requestLocationUpdates(
-            LocationManager.GPS_PROVIDER,
-            5000,
-            0f,
-            locationListener
-        )
-    }
 
     private fun showDelDialog(data: MenuModel) {
         pop.showDialog(requireContext(),
@@ -241,7 +212,6 @@ class HomeFragment : Fragment() {
     private fun observableSearchViewModel(textSearch: String) {
         val searchText = textSearch.capitalizeWords()
         val search = menuList.filter { it.name.contains(searchText) }
-        println(search)
         menuAdapter.submitList(search)
     }
 
@@ -260,6 +230,32 @@ class HomeFragment : Fragment() {
 
         }
     }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun observableWeathers() {
+        weatherModel.weather.observe(this) {
+            if (it != null) {
+                tvWeather = requireView().findViewById(R.id.tv_weather)
+                tvWeather.text = it.temperature.toString()
+                tvWind = requireView().findViewById(R.id.tv_wind)
+                tvWind.text = "${it.windspeed} m/s"
+                generateTime(it.time)
+            }
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun generateTime(time: String) {
+        val dateTime: LocalDateTime = LocalDateTime.parse(time, DateTimeFormatter.ISO_DATE_TIME)
+        val dayOfWeek = dateTime.dayOfWeek.getDisplayName(TextStyle.FULL, Locale("id"))
+        val dayOfMonth = dateTime.get(ChronoField.DAY_OF_MONTH)
+        val month = dateTime.month.getDisplayName(TextStyle.FULL, Locale("id"))
+
+        val formatted = "$dayOfWeek, $dayOfMonth $month"
+        tvDate = requireView().findViewById(R.id.tv_date)
+        tvDate.text = formatted
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

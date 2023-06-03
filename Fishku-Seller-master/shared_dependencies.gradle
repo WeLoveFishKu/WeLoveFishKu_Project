@@ -1,11 +1,11 @@
 dependencies {
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 
     // Coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
-    api "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -19,7 +19,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
     // Security
-    implementation "androidx.security:security-crypto:1.1.0-alpha04"
+    implementation "androidx.security:security-crypto:1.1.0-alpha06"
     implementation 'com.scottyab:secure-preferences-lib:0.1.7'
 
     // firebase
