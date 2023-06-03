@@ -1,22 +1,28 @@
 package id.fishku.fisherseller.presentation.ui.maps
 
+import android.app.Dialog
 import android.content.pm.PackageManager
 import android.location.Location
-import android.location.LocationListener
-import android.location.LocationManager
-import android.location.LocationRequest
 import android.os.Bundle
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.Priority.PRIORITY_HIGH_ACCURACY
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.ActivityMapsBinding
+import id.fishku.fisherseller.presentation.ui.Data.FakeDataFish
 import id.fishku.fisherseller.seller.services.SessionManager
 import javax.inject.Inject
 
@@ -25,6 +31,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityMapsBinding
+
+    //fish layout
+    private lateinit var imgFish: ImageView
+    private lateinit var tvFishName: TextView
+    private lateinit var tvFishPrice: TextView
+    private lateinit var tvFishDesc: TextView
 
     @Inject
     lateinit var prefs: SessionManager
@@ -38,6 +50,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -48,7 +62,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isMapToolbarEnabled = true
 
 
+        mMap.setOnMarkerClickListener { marker ->
+            showDialog(marker)
+            true
+        }
+
         getMyLocation()
+        markerFish()
     }
 
     private val requestPermissionLauncher =
@@ -82,4 +102,40 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
     }
+
+    private fun markerFish() {
+        FakeDataFish.dummyDataFish.forEach { fish ->
+            val latLng = LatLng(fish.lat.toDouble(), fish.lon.toDouble())
+            mMap.addMarker(
+                MarkerOptions().position(latLng).title(fish.title).snippet(fish.id.toString())
+            )
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
+
+        }
+    }
+
+    private fun showDialog(marker: Marker) {
+        val dialog = Dialog(this)
+
+        dialog.setContentView(R.layout.detail_fish)
+        dialog.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        val title = dialog.findViewById<TextView>(R.id.txtFishName)
+        val desc = dialog.findViewById<TextView>(R.id.txtFishDescription)
+        val img = dialog.findViewById<ImageView>(R.id.imgFish)
+
+        if (marker.snippet != null) {
+            val id = marker.snippet!!.toInt() - 1
+            val fish = FakeDataFish.dummyDataFish[id]
+            title.text = fish.title
+            desc.text = fish.description
+            Glide.with(this).load(fish.image).into(img)
+        }
+
+        dialog.show()
+    }
 }
+
+

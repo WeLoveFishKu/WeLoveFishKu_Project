@@ -228,6 +228,8 @@
     <string name="ajukan_pengembalian">Ajukan Pengembalian</string>
     <string name="hubungi_wa">Hubungi WA</string>
     <string name="instagram">Instagram</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
