@@ -3,7 +3,7 @@
     <string name="hello_figo_akmal">hello_user</string>
     <string name="date_dummy">Senin, 17 Apr</string>
     <string name="wind_dummy">12 m/s</string>
-    <string name="flow_dummy">Ombak laut sedang tinggi (12 m)</string>
+    <string name="flow_dummy">%1$s m</string>
     <string name="placeholder">disini kamu bisa liat uang mu</string>
     <string name="wd">Withdraw</string>
     <string name="jual_ikan">Jual Ikan</string>
@@ -14,4 +14,5 @@
     <string name="_1_600_00">Rp 1.600.000</string>
     <string name="_1_75">1,75%</string>
     <string name="_5_kg">35.000 / kg</string>
+    <string name="ombak">Ombak: %1$s</string>
 </resources>

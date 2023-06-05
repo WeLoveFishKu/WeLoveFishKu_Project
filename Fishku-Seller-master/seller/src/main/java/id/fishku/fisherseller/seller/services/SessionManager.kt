@@ -31,6 +31,7 @@ class SessionManager(context: Context) {
         private const val ROLES = "roles"
         private const val LONGITUDE = "long"
         private const val LATITUDE = "lat"
+        private const val WAVE = "wave"
     }
 
     private var prefs: SharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -120,29 +121,40 @@ class SessionManager(context: Context) {
         editor.apply()
     }
 
-    fun setLocation(latitude: Double, longitude: Double) {
-        val editor = prefs.edit()
-        editor.putString(LOCATION, "location")
-        editor.apply()
-    }
-
-    fun getLocation(): String =
-        prefs.getString(LOCATION, "").toString()
 
     fun setLongitude(long: String) {
         val editor = prefs.edit()
         editor.putString(LONGITUDE, long)
         editor.apply()
     }
+
     fun setLatitude(lat: String) {
         val editor = prefs.edit()
         editor.putString(LATITUDE, lat)
         editor.apply()
     }
-    
+
     fun getLongitude(): String =
         prefs.getString(LONGITUDE, "").toString()
 
     fun getLatitude(): String =
         prefs.getString(LATITUDE, "").toString()
+
+    fun setWave(wave: String) {
+        val editor = prefs.edit()
+        editor.putString(WAVE, wave)
+        editor.apply()
+    }
+
+    fun getWave(): String =
+        prefs.getString(WAVE, "").toString()
+
+    fun setTime(time: String) {
+        val editor = prefs.edit()
+        editor.putString("time", time)
+        editor.apply()
+    }
+
+    fun getTime(): String =
+        prefs.getString("time", "").toString()
 }

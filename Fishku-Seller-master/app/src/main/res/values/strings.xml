@@ -181,7 +181,7 @@
     <string name="date_dummy">Senin, 17 Apr</string>
     <string name="weather_dummy">%1sC</string>
     <string name="wind_dummy">12 m/s</string>
-    <string name="flow_dummy">Ombak laut sedang tinggi (12 m)</string>
+    <string name="flow_dummy">%1$s m</string>
     <string name="placeholder">disini kamu bisa liat uang mu</string>
     <string name="wd">Withdraw</string>
     <string name="jual_ikan">Jual Ikan</string>
@@ -230,6 +230,7 @@
     <string name="instagram">Instagram</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ombak">Ombak: %1$s</string>
 
 
 </resources>

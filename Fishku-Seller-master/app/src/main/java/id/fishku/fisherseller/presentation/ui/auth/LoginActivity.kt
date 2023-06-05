@@ -58,6 +58,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     @Inject
     lateinit var getToken: GenerateToken
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityLoginBinding.inflate(layoutInflater)

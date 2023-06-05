@@ -1,21 +1,33 @@
 package id.fishku.fisherseller.presentation.ui.home
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.tasks.OnSuccessListener
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.FragmentHomeBinding
@@ -23,6 +35,8 @@ import id.fishku.fisherseller.otp.core.Status
 import id.fishku.fisherseller.presentation.ui.MainViewModelFactory
 import id.fishku.fisherseller.presentation.ui.add.AddFActivity
 import id.fishku.fisherseller.presentation.ui.maps.MapsActivity
+import id.fishku.fisherseller.presentation.ui.weathers.CurrentWeather
+import id.fishku.fisherseller.presentation.ui.weathers.HourlyWave
 import id.fishku.fisherseller.presentation.ui.weathers.WeatherModel
 import id.fishku.fisherseller.seller.services.SessionManager
 import id.fishku.fishersellercore.model.MenuModel
@@ -46,12 +60,12 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private var _searchText: String? = null
-    private val searchText get() = _searchText ?: ""
     private var _menuList: List<MenuModel>? = null
     private val menuList get() = _menuList ?: listOf()
     private lateinit var menuAdapter: MenuAdapter
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var weatherModel: WeatherModel
+
 
     @Inject
     lateinit var prefs: SessionManager
@@ -68,6 +82,15 @@ class HomeFragment : Fragment() {
     private lateinit var tvWeather: TextView
     private lateinit var tvWind: TextView
     private lateinit var tvDate: TextView
+    private lateinit var tvFlow: TextView
+    private lateinit var tvWave: TextView
+    private lateinit var llDate: LinearLayout
+    private lateinit var llflow: LinearLayout
+
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    private val weatherHandler = Handler(Looper.getMainLooper())
+    private lateinit var weatherRunnable: Runnable
 
 
     override fun onCreateView(
@@ -76,12 +99,18 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+
         return binding.root
+
     }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         val data = prefs.getUser()
         tvName = view.findViewById(R.id.tv_user)
@@ -128,22 +157,11 @@ class HomeFragment : Fragment() {
         menuAdapter.setOnDelClick {
             showDelDialog(it)
         }
-//        binding.edtSearch.addTextChangedListener(afterTextChangedListener)
-//        binding.edtSearch.setOnEditorActionListener(OnEditorActionListener { v, actionId, _ ->
-//            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-//                val textSearch = v.text.toString()
-//                sendRequest(textSearch)
-//                return@OnEditorActionListener true
-//            }
-//            false
-//        })
-//        binding.inputSearch.setEndIconOnClickListener {
-//            sendRequest(searchText)
-//        }
 
 
         observableViewModel()
-        observableWeathers()
+        getLocation()
+        getCurrentTime()
     }
 
 
@@ -165,9 +183,11 @@ class HomeFragment : Fragment() {
                 Status.LOADING -> {
 
                 }
+
                 Status.ERROR -> {
 
                 }
+
                 Status.SUCCESS -> {
                     binding.root.mySnackBar(getString(R.string.del_product), R.color.green)
                     observableViewModel()
@@ -187,9 +207,11 @@ class HomeFragment : Fragment() {
                 Status.LOADING -> {
                     loading(true)
                 }
+
                 Status.ERROR -> {
                     loading(false)
                 }
+
                 Status.SUCCESS -> {
                     loading(false)
                     val empty = res.data?.banyak
@@ -232,17 +254,74 @@ class HomeFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun observableWeathers() {
-        weatherModel.weather.observe(this) {
-            if (it != null) {
+    private fun observableWeathers(latitude: Double, longitude: Double) {
+
+        fun updateWeatherData(currentWeather: CurrentWeather?) {
+            if (currentWeather != null) {
+                llDate = requireView().findViewById(R.id.ll_date)
+                llDate.isVisible = true
                 tvWeather = requireView().findViewById(R.id.tv_weather)
-                tvWeather.text = it.temperature.toString()
+                tvWeather.text = currentWeather.temperature.toString()
                 tvWind = requireView().findViewById(R.id.tv_wind)
-                tvWind.text = "${it.windspeed} m/s"
-                generateTime(it.time)
+                tvWind.text = "${currentWeather.windspeed} m/s"
+                generateTime(currentWeather.time)
             }
         }
+
+        weatherModel.weather.observe(viewLifecycleOwner, ::updateWeatherData)
+        weatherRunnable = Runnable {
+            weatherModel.getWeather(latitude, longitude)
+            weatherHandler.postDelayed(weatherRunnable, 5000) // Memperbarui setiap 10 detik
+        }
+        weatherHandler.post(weatherRunnable)
     }
+
+
+    private fun observableHourlyWave(latitude: Double, longitude: Double) {
+        fun updateHourlyWaveData(hourlyWave: HourlyWave) {
+            if (hourlyWave != null) {
+                llflow = requireView().findViewById(R.id.ll_flow)
+                llflow.isVisible = true
+                hourlyWave.time.forEach { time ->
+                    if (time == prefs.getTime()) {
+                        val index = hourlyWave.time.indexOf(time)
+                        val wave = hourlyWave.waveHeight[index]
+                        prefs.setWave(wave.toString())
+                    }
+                }
+
+                tvFlow = requireView().findViewById(R.id.tv_flow)
+                tvFlow.text = prefs.getWave()
+
+                if (prefs.getWave().toDouble() > 5 && prefs.getWave().toDouble() < 10) {
+                    tvWave = requireView().findViewById(R.id.wave_height)
+                    tvWave.text = "Sedang"
+                } else if (prefs.getWave().toDouble() > 10) {
+                    tvWave = requireView().findViewById(R.id.wave_height)
+                    tvWave.text = "Tinggi"
+                } else {
+                    tvWave = requireView().findViewById(R.id.wave_height)
+                    tvWave.text = "Rendah"
+                }
+            }
+        }
+        weatherModel.hourly.observe(viewLifecycleOwner, ::updateHourlyWaveData)
+        weatherRunnable = Runnable {
+            weatherModel.getHourly(latitude, longitude)
+            weatherHandler.postDelayed(weatherRunnable, 10000) // Memperbarui setiap 10 detik
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getCurrentTime(): String {
+        val mm = "00"
+        val current = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:$mm")
+        val formatted = current.format(formatter)
+        prefs.setTime(formatted)
+        return formatted
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun generateTime(time: String) {
@@ -256,6 +335,62 @@ class HomeFragment : Fragment() {
         tvDate.text = formatted
     }
 
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun getLocation() {
+        if (ActivityCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+            && ActivityCompat.checkSelfPermission(
+                requireActivity(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                1
+            )
+        } else {
+            loading(true)
+            fusedLocationClient.lastLocation.addOnSuccessListener(
+                requireActivity(),
+                OnSuccessListener<Location> { location ->
+                    if (location != null) {
+                        val latitude = location.latitude
+                        val longitude = location.longitude
+                        observableWeathers(latitude, longitude)
+                        observableHourlyWave(latitude, longitude)
+                        Log.e("TAG", "getLocation: $latitude $longitude")
+                        loading(false)
+                    } else {
+                        Toast.makeText(
+                            requireActivity(),
+                            "Tidak dapat mendapatkan lokasi",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                })
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLocation()
+            } else {
+                Toast.makeText(requireActivity(), "Izin akses lokasi ditolak", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ApiConfig {
 
     companion object {
-        fun getApiService() : ApiService {
+        fun getApiService(): ApiService {
             val loggingInterceptor =
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val client = OkHttpClient.Builder()
@@ -16,6 +16,20 @@ class ApiConfig {
                 .build()
             val retrofit = Retrofit.Builder()
                 .baseUrl("https://api.open-meteo.com/v1/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build()
+            return retrofit.create(ApiService::class.java)
+        }
+
+        fun getWaveApiService(): ApiService {
+            val loggingInterceptor =
+                HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+            val client = OkHttpClient.Builder()
+                .addInterceptor(loggingInterceptor)
+                .build()
+            val retrofit = Retrofit.Builder()
+                .baseUrl("https://marine-api.open-meteo.com/v1/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

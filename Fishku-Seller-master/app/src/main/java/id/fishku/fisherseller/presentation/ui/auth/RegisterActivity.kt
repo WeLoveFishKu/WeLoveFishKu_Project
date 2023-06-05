@@ -25,9 +25,10 @@ import id.fishku.fishersellercore.view.LottieLoading
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, View.OnClickListener  {
+class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
+    View.OnClickListener {
 
-    companion object{
+    companion object {
         const val NUMBER = "number"
     }
 
@@ -45,6 +46,7 @@ class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
     @Inject
     lateinit var prefs: SessionManager
+
     @Inject
     lateinit var loading: LottieLoading
 
@@ -78,8 +80,8 @@ class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         validateField()
     }
 
-    private fun initVar(){
-        with(binding){
+    private fun initVar() {
+        with(binding) {
             name = edtUser
             email = edtEmail
             password = edtPw
@@ -87,36 +89,38 @@ class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         }
     }
 
-    private fun sendRequest(){
+    private fun sendRequest() {
 
         val name = name.textTrim()
         val email = email.textTrim()
         val password = password.textTrim()
         val location = location.textTrim()
         val number = otpArgs?.user?.phone_number!!
-            val request = RegisterRequest(name, email, password, number, location, roles)
-            observableViewModel(request)
+        val request = RegisterRequest(name, email, password, number, location, roles)
+        observableViewModel(request)
 
     }
 
-    private fun observableViewModel(request: RegisterRequest){
-        viewModel.register(request).observe(this){ res ->
-            when(res.status){
+    private fun observableViewModel(request: RegisterRequest) {
+        viewModel.register(request).observe(this) { res ->
+            when (res.status) {
                 Status.LOADING -> loading.start(this)
                 Status.ERROR -> {
                     loading.stop()
                     binding.root.mySnackBar(getString(R.string.register_error))
                 }
+
                 Status.SUCCESS -> {
                     loading.stop()
-                    startToOTP()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
                     finish()
                 }
             }
         }
     }
 
-    private fun startToOTP(){
+    private fun startToOTP() {
         val userData = User(
             name = name.textTrim(),
             email = email.textTrim(),
@@ -125,17 +129,17 @@ class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             roles = roles,
         )
 
-        if (otpArgs?.user?.phone_number != null){
+        if (otpArgs?.user?.phone_number != null) {
             val intent = Intent(this, SendOTPActivity::class.java)
             intent.putExtra(NUMBER, OtpArgs(userData))
             startActivity(intent)
         }
     }
 
-    private fun validateField(){
-        with(binding){
+    private fun validateField() {
+        with(binding) {
             edtEmail.validate(resources.getString(R.string.email_invalid)) { s1 -> s1.isValidEmail() }
-            edtPw.validate(resources.getString(R.string.min_char_pw)) { s1 -> s1.length >=6 }
+            edtPw.validate(resources.getString(R.string.min_char_pw)) { s1 -> s1.length >= 6 }
             edtEmail.addTextChangedListener(afterTextChangedListener)
             edtPw.addTextChangedListener(afterTextChangedListener)
             edtUser.addTextChangedListener(afterTextChangedListener)
@@ -152,7 +156,7 @@ class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         }
 
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            with(binding){
+            with(binding) {
                 val usernameInput: String = edtUser.textTrim()
                 val addressInput: String = edtAddress.textTrim()
 
@@ -165,7 +169,8 @@ class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         }
 
         override fun afterTextChanged(s: Editable) {
-            binding.btnRegister.isEnabled = (binding.edtEmail.error.isNullOrBlank() && binding.edtPw.error.isNullOrBlank())
+            binding.btnRegister.isEnabled =
+                (binding.edtEmail.error.isNullOrBlank() && binding.edtPw.error.isNullOrBlank())
 
 
             // ignore
@@ -187,9 +192,11 @@ class RegisterActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
             R.id.tv_register -> {
                 startActivity(Intent(this, LoginActivity::class.java))
             }
+
             R.id.btn_register -> {
                 sendRequest()
             }
+
             R.id.btn_back -> {
                 val intent = Intent(this, SendOTPActivity::class.java)
                 startActivity(intent)
