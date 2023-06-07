@@ -1,6 +1,9 @@
 package id.fishku.fisherseller.presentation.ui.add
 
 import android.annotation.SuppressLint
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.content.Intent.ACTION_GET_CONTENT
 import android.content.pm.PackageManager
@@ -16,12 +19,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.net.toUri
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.ActivityAddBinding
+import id.fishku.fisherseller.ml.MobilenetV110224Quant
 import id.fishku.fisherseller.otp.core.Status
 import id.fishku.fisherseller.presentation.ui.DashboardActivity
 import id.fishku.fisherseller.seller.services.SessionManager
@@ -39,6 +45,9 @@ import id.zelory.compressor.constraint.quality
 import id.zelory.compressor.constraint.size
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.image.TensorImage
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.io.File
 import javax.inject.Inject
 
@@ -53,6 +62,11 @@ class AddFActivity : AppCompatActivity(), View.OnClickListener {
 
     private var _editMenu: MenuModel? = null
     private val editMenu get() = _editMenu
+
+    private var bitmap: Bitmap? = null
+
+    private lateinit var labels: List<String>
+
 
     @Inject
     lateinit var prefs: SessionManager
@@ -78,11 +92,19 @@ class AddFActivity : AppCompatActivity(), View.OnClickListener {
         ) == PackageManager.PERMISSION_GRANTED
     }
 
+    companion object {
+        private const val NOTIFICATION_ID = 1
+        private const val CHANNEL_ID = "channel_01"
+        private const val CHANNEL_NAME = "fishku channel"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityAddBinding.inflate(layoutInflater)
         supportActionBar?.hide()
         setContentView(binding.root)
+
+        labels = application.assets.open("labels.txt").bufferedReader().useLines { it.toList() }
 
         if (!allPermissionGranted()) {
             ActivityCompat.requestPermissions(
@@ -108,15 +130,17 @@ class AddFActivity : AppCompatActivity(), View.OnClickListener {
         } else {
             intent.getParcelableExtra(Constants.SEND_MENU_TO_EDIT)
         }
-        if (editMenu != null){
+        if (editMenu != null) {
             binding.tvHeader.text = resources.getString(R.string.edit_menu)
             binding.tvEdit.visibility = View.GONE
         }
         binding.edtName.setText(editMenu?.name ?: "")
         binding.edtPrice.setText(editMenu?.price ?: "")
         binding.edtStock.setText(editMenu?.weight?.toString() ?: "")
-        editMenu?.photo_url?.let { binding.itemImg.setImage(Constants.URL_IMAGE+it) }
+        editMenu?.photo_url?.let { binding.itemImg.setImage(Constants.URL_IMAGE + it) }
+
     }
+
 
     private fun sendRequest() {
         val id = prefs.getUser().id
@@ -133,14 +157,18 @@ class AddFActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun uploadImage(){
+    private fun uploadImage() {
 
         if (myFile != null) {
             observableUploadViewModel(myFile!!)
-        } else{
+        } else {
             sendRequest()
             binding.ivEmpty.visibility = View.VISIBLE
         }
+
+        //send notification
+        sendNotif()
+
     }
 
     private fun observableUploadViewModel(file: File) {
@@ -154,9 +182,11 @@ class AddFActivity : AppCompatActivity(), View.OnClickListener {
             when (res.status) {
                 Status.LOADING -> {
                 }
+
                 Status.ERROR -> {
                     binding.root.mySnackBar(getString(R.string.add_product_failed))
                 }
+
                 Status.SUCCESS -> {
                     binding.root.mySnackBar(getString(R.string.edit_product), R.color.green)
                     startActivity(Intent(this, DashboardActivity::class.java))
@@ -172,9 +202,11 @@ class AddFActivity : AppCompatActivity(), View.OnClickListener {
                 Status.LOADING -> {
 
                 }
+
                 Status.ERROR -> {
                     binding.root.mySnackBar(getString(R.string.add_product_failed))
                 }
+
                 Status.SUCCESS -> {
                     binding.root.mySnackBar(getString(R.string.add_product), R.color.green)
                     startActivity(Intent(this, DashboardActivity::class.java))
@@ -256,11 +288,79 @@ class AddFActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
+
             R.id.btn_add -> {
-                uploadImage()
+                val model = MobilenetV110224Quant.newInstance(this)
+
+                // Creates inputs for reference.
+                val inputFeature0 =
+                    TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.UINT8)
+
+                bitmap = Bitmap.createScaledBitmap(
+                    binding.itemImg.drawable.toBitmap(),
+                    224,
+                    224,
+                    true
+                )
+                inputFeature0.loadBuffer(TensorImage.fromBitmap(bitmap).buffer)
+
+                // Runs model inference and gets result.
+                val outputs = model.process(inputFeature0)
+                val outputFeature0 = outputs.outputFeature0AsTensorBuffer
+
+                val result = labels[getMax(outputFeature0.floatArray)]
+
+                if (getNameIsFish(result) == "fish") {
+                    uploadImage()
+                } else {
+                    binding.root.mySnackBar("Barang yang kamu jual bukan ikan, silahkan coba lagi")
+                }
+                model.close()
             }
+
             R.id.tv_edit -> startGallery()
         }
+    }
+
+    private fun getNameIsFish(name: String): String {
+        val words = name.split(" ")
+        return words.last()
+    }
+
+    private fun getMax(floatArray: FloatArray?): Int {
+        var max = 0
+        for (i in floatArray!!.indices) {
+            if (floatArray[i] > floatArray[max]) max = i
+        }
+        return max
+    }
+
+    // send notif
+
+    private fun sendNotif() {
+
+        val mNotivicationManager =
+            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.logo)
+            .setContentTitle("Produk berhasil ditambahkan")
+            .setContentText("Maksimalkan pendapatanmu tambah lagi produknya !")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channel = NotificationChannel(
+                CHANNEL_ID,
+                CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_DEFAULT
+            )
+            channel.description = CHANNEL_NAME
+
+            mBuilder.setChannelId(CHANNEL_ID)
+            mNotivicationManager.createNotificationChannel(channel)
+        }
+
+        val notification = mBuilder.build()
+        mNotivicationManager.notify(NOTIFICATION_ID, notification)
     }
 
     override fun onDestroy() {

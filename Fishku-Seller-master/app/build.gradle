@@ -39,6 +39,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        mlModelBinding true
     }
     namespace 'id.fishku.fisherseller'
     buildToolsVersion '33.0.2'
@@ -60,6 +61,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation project(path: ':notification')
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -117,5 +120,8 @@ dependencies {
 
     //date time formater
     implementation 'com.android.tools:desugar_jdk_libs:1.1.5'
+
+    implementation "androidx.work:work-runtime:2.5.0"
+    implementation 'com.loopj.android:android-async-http:1.4.10'
 
 }

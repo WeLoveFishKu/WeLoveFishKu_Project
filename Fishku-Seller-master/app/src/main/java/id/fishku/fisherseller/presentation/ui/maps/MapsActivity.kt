@@ -22,7 +22,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.ActivityMapsBinding
-import id.fishku.fisherseller.presentation.ui.Data.FakeDataFish
+import id.fishku.fisherseller.presentation.ui.data.FakeDataFish
 import id.fishku.fisherseller.seller.services.SessionManager
 import javax.inject.Inject
 

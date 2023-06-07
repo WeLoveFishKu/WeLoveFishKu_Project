@@ -13,7 +13,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/selamat_pagi"
+        android:text="@string/hallo_fishku_partner"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -55,11 +55,10 @@
     <include
         android:id="@+id/list_caption"
         layout="@layout/list_caption"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView37"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
 
     <TextView

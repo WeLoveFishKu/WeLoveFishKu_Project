@@ -1,4 +1,4 @@
-package id.fishku.fisherseller.presentation.ui.Data
+package id.fishku.fisherseller.presentation.ui.data
 
 data class Fish(
     val id: Int,

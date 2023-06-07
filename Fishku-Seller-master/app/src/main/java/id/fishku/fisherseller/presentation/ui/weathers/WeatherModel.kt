@@ -5,24 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import id.fishku.fisherseller.retrofit.ApiConfig
-import id.fishku.fisherseller.seller.services.SessionManager
 
 class WeatherModel(context: Context) : ViewModel() {
 
     private val _weather = MutableLiveData<CurrentWeather>()
     val weather: LiveData<CurrentWeather> = _weather
 
-    private val _wave = MutableLiveData<HourlyUnitsWave>()
-    val wave: LiveData<HourlyUnitsWave> = _wave
-
     private val _hourly = MutableLiveData<HourlyWave>()
     val hourly: LiveData<HourlyWave> = _hourly
 
     private val _loading = MutableLiveData<Boolean>()
     val loading: LiveData<Boolean> = _loading
-
-
-    private val prefs: SessionManager = SessionManager(context)
 
     init {
         getWeather()
@@ -57,34 +50,6 @@ class WeatherModel(context: Context) : ViewModel() {
         }
     }
 
-    fun getWave(lat: Double, long: Double) {
-        if (lat != null && long != null) {
-            _loading.value = true
-            val client = ApiConfig.getApiService().getWave(
-                lat,
-                long,
-                listOf("wave_height"),
-                "metric"
-            )
-
-            client.enqueue(object : retrofit2.Callback<WaveResponse> {
-                override fun onResponse(
-                    call: retrofit2.Call<WaveResponse>,
-                    response: retrofit2.Response<WaveResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        _loading.value = false
-                        _wave.value = response.body()?.hourlyUnits
-                    }
-                }
-
-                override fun onFailure(call: retrofit2.Call<WaveResponse>, t: Throwable) {
-                    t.printStackTrace()
-                }
-            })
-        }
-
-    }
 
     fun getHourly(lat: Double, long: Double) {
         if (lat != null && long != null) {
