@@ -26,13 +26,13 @@
         android:theme="@style/Theme.FisherSeller"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".presentation.ui.prediksi.PrediksiActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDwUFlnzX2SeX4R9iHIW0-Dkasx-i2YiWk" />
-
-        <!--  android:value="AIzaSyBwnPuKVmuXBfTRXSh0t3Rw9cKUYVs5nHM" -->
-
+            android:value="AIzaSyDwUFlnzX2SeX4R9iHIW0-Dkasx-i2YiWk" /> <!-- android:value="AIzaSyBwnPuKVmuXBfTRXSh0t3Rw9cKUYVs5nHM" -->
         <activity
             android:name=".presentation.ui.maps.MapsActivity"
             android:exported="false"

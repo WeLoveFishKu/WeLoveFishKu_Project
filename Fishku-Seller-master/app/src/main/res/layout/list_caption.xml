@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="16dp">
+    android:orientation="horizontal">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -53,10 +52,10 @@
             android:id="@+id/textView38"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
-            android:layout_marginTop="8dp"
             android:text="@string/ajukan_pengembalian"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -83,11 +82,11 @@
             android:id="@+id/textView41"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vertical8"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
             android:text="@string/laporkan_penjual"
             android:textSize="14sp"
-            android:layout_marginTop="@dimen/vertical8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView3" />

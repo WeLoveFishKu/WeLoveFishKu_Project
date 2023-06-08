@@ -198,25 +198,27 @@
     <string name="check">check</string>
     <string name="title_activity_maps">MapsActivity</string>
 
-    <string name="faq_1">Cara memilih kualitas ikan yang baik</string>
-    <string name="faq_2">Jumlah ikan yang dikirimkan tidak sesuai</string>
-    <string name="faq_3">Stok ikan habis</string>
-    <string name="faq_4">Biaya tambahan untuk pengiriman</string>
-    <string name="faq_5">Biaya packaging ikan</string>
-    <string name="faq_6">Memantau status pesanan</string>
-    <string name="faq_7">Pesanan saya tak kunjung datang</string>
-    <string name="faq_8">Cara menghubungi seller</string>
-    <string name="faq_9">Cara menarik saldo sementara</string>
+    <string name="faq_1">Jumlah Ikan yang dikirimkan tidak sesuai</string>
+    <string name="faq_2">Stok Ikan Habis</string>
+    <string name="faq_3">Biaya Tambahan untuk pengiriman</string>
+    <string name="faq_4">Biaya packaging ikan</string>
+    <string name="faq_5">Memantau status pesanan</string>
+    <string name="faq_6">Pesanan saya tak kunjung datang</string>
+    <string name="faq_7">Cara menghubungi seller</string>
+    <string name="faq_8">Cara menarik saldo sementara</string>
 
-    <string name="ans_1">Gitu deh</string>
-    <string name="ans_2">Nyoba</string>
-    <string name="ans_3">masa</string>
-    <string name="ans_4">dikit</string>
-    <string name="ans_5">ya packaging ikan</string>
-    <string name="ans_6">Memantau status pesanan</string>
-    <string name="ans_7">Pesanan saya tak kunjung datang</string>
-    <string name="ans_8">Cara menghubungi seller</string>
-    <string name="ans_9">Cara menarik saldo sementara</string>
+    <string name="ans_1">Kamu bisa sertakan bukti penerimaan barang berupa video ketika unboxing dan upload ke whatsapp FishkuCare</string>
+    <string name="ans_2">Apabila stok habis, kamu bisa chat penjual melalui fitur chat untuk menanyakan periode pengadaan stok kembali.
+</string>
+    <string name="ans_3">Tidak ada biaya tambahan yang disediakan oleh aplikasi.</string>
+    <string name="ans_4">Kalau kamu ingin request pengemasan tambahan seperti bubble wrap atau kotak kayu, kamu bisa melakukan chat kepada seller. Transaksi biaya tambahan dilakukan diluar aplikasi.
+</string>
+    <string name="ans_5">Kamu bisa klik "Akun" di kanan bawah layarmu dan klik "Pesanan" lalu "lacak" untuk melihat status pesanan.
+</string>
+    <string name="ans_6">Kamu bisa klik "Lacak" pada halaman akun dan salin nomor resi tersebut ke website penyedia jasa logistik tertentu untuk melihat status pengiriman. Hubungi fishkucare apabila masalah belum terselesaikan.</string>
+    <string name="ans_7">Kamu bisa mengklik item/pesananmu untuk masuk ke halaman item, lalu klik logo chat yang berada di kanan identitas seller.
+</string>
+    <string name="ans_8">Ke halaman Beranda, kemudian klik "withdraw" untuk menarik saldo sementara.</string>
 
     <string name="selamat_pagi">Selamat Pagi,</string>
     <string name="kami_siap_membantu_anda">Kami siap membantu anda!</string>

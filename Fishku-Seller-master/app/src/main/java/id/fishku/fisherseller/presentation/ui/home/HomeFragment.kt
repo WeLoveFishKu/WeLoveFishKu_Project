@@ -14,17 +14,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.liveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -36,6 +32,8 @@ import id.fishku.fisherseller.otp.core.Status
 import id.fishku.fisherseller.presentation.ui.MainViewModelFactory
 import id.fishku.fisherseller.presentation.ui.add.AddFActivity
 import id.fishku.fisherseller.presentation.ui.maps.MapsActivity
+import id.fishku.fisherseller.presentation.ui.prediksi.PrediksiActivity
+import id.fishku.fisherseller.presentation.ui.prediksi.PrediksiModel
 import id.fishku.fisherseller.presentation.ui.weathers.CurrentWeather
 import id.fishku.fisherseller.presentation.ui.weathers.HourlyWave
 import id.fishku.fisherseller.presentation.ui.weathers.WeatherModel
@@ -66,6 +64,7 @@ class HomeFragment : Fragment() {
     private lateinit var menuAdapter: MenuAdapter
     private val viewModel: HomeViewModel by viewModels()
     private lateinit var weatherModel: WeatherModel
+    private lateinit var prediksiModel: PrediksiModel
 
 
     @Inject
@@ -87,6 +86,8 @@ class HomeFragment : Fragment() {
     private lateinit var tvWave: TextView
     private lateinit var llDate: LinearLayout
     private lateinit var llflow: LinearLayout
+    private lateinit var predik: ConstraintLayout
+    private lateinit var tvPredik: TextView
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
@@ -141,6 +142,7 @@ class HomeFragment : Fragment() {
 //                    println("${it.data}")
 //                }
 //            }
+
         }
 
         menuAdapter = MenuAdapter(requireContext())
@@ -159,6 +161,13 @@ class HomeFragment : Fragment() {
             showDelDialog(it)
         }
 
+        predik = view.findViewById(R.id.cl_chart_fish_price)
+        predik.setOnClickListener {
+            val intent = Intent(requireActivity(), PrediksiActivity::class.java)
+            startActivity(intent)
+        }
+        tvPredik = view.findViewById(R.id.tv_kisaranikan)
+        tvPredik.text = "Rp ${prefs.getKisaran()} /Kg"
 
         observableViewModel()
         getLocation()
@@ -392,6 +401,7 @@ class HomeFragment : Fragment() {
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

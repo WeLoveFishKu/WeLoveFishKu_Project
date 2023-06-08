@@ -124,4 +124,6 @@ dependencies {
     implementation "androidx.work:work-runtime:2.5.0"
     implementation 'com.loopj.android:android-async-http:1.4.10'
 
+    implementation 'com.opencsv:opencsv:5.5.2'
+
 }

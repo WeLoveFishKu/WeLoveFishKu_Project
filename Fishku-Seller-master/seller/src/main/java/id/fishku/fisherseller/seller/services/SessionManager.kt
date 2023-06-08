@@ -32,6 +32,7 @@ class SessionManager(context: Context) {
         private const val LONGITUDE = "long"
         private const val LATITUDE = "lat"
         private const val WAVE = "wave"
+        private const val KISARAN_IKAN = "kisaran_ikan"
     }
 
     private var prefs: SharedPreferences = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -157,4 +158,13 @@ class SessionManager(context: Context) {
 
     fun getTime(): String =
         prefs.getString("time", "").toString()
+
+    fun setKisaran(kisaran: String) {
+        val editor = prefs.edit()
+        editor.putString(KISARAN_IKAN, kisaran)
+        editor.apply()
+    }
+
+    fun getKisaran(): String =
+        prefs.getString(KISARAN_IKAN, "").toString()
 }

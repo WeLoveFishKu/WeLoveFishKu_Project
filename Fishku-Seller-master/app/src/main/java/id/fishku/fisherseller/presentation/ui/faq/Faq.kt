@@ -39,7 +39,6 @@ class Faq : AppCompatActivity() {
             getString(R.string.faq_6),
             getString(R.string.faq_7),
             getString(R.string.faq_8),
-            getString(R.string.faq_9)
         )
         answer = arrayOf(
             getString(R.string.ans_1),
@@ -50,7 +49,6 @@ class Faq : AppCompatActivity() {
             getString(R.string.ans_6),
             getString(R.string.ans_7),
             getString(R.string.ans_8),
-            getString(R.string.ans_9)
         )
 
         recyclerView = findViewById(R.id.recyclerView)
@@ -61,10 +59,11 @@ class Faq : AppCompatActivity() {
         getData()
 
         binding.btnWa.setOnClickListener {
+            val name = binding.editTextSearchFaq.text.toString()
             val phoneNumber =
                 "6281213676438" // share to fishku number
             val message =
-                "Halo, Bisa kah kamu membantu saya ?"
+                "Halo saya $name , Bisa kah kamu membantu saya ?"
             val uri = Uri.parse(
                 "https://api.whatsapp.com/send?phone=$phoneNumber&text=${
                     URLEncoder.encode(
