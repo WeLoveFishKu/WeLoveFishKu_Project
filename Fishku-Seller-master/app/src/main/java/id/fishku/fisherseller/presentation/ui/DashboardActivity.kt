@@ -52,7 +52,6 @@ class DashboardActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
         initRemoteConfig()
     }
 
@@ -78,7 +77,9 @@ class DashboardActivity : AppCompatActivity() {
             .setTitle("Keluar Aplikasi")
             .setMessage("Apakah Anda yakin ingin keluar dari aplikasi?")
             .setPositiveButton("Ya") { _, _ ->
-                finish()
+                super.onBackPressed()
+//                close app when user click yes
+                finishAffinity()
             }
             .setNegativeButton("Tidak", null)
             .show()

@@ -63,7 +63,6 @@ class LiveChatFragment : Fragment() {
             setUpChats()
         }
 
-
     }
 
     private fun listenUserChats() {
@@ -95,7 +94,7 @@ class LiveChatFragment : Fragment() {
                 when (chats) {
                     is ResourceState.Loading -> {}
                     is ResourceState.Success -> {
-                        if (chats.data!!.isNotEmpty()){
+                        if (chats.data!!.isNotEmpty()) {
                             groupAdapter.clear()
                             groupAdapter.addAll(chats.data!!.toUserSellerITem())
                             groupAdapter.setOnItemClickListener { item, _ ->
@@ -108,7 +107,7 @@ class LiveChatFragment : Fragment() {
                                 adapter = groupAdapter
                             }
                             binding.swiperefresh.isRefreshing = false
-                        }else {
+                        } else {
                             binding.noChat.visibility = View.VISIBLE
                         }
                     }

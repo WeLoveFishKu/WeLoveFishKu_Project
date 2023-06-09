@@ -27,7 +27,7 @@ import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import id.fishku.fisherseller.R
 import id.fishku.fisherseller.databinding.ActivityAddBinding
-import id.fishku.fisherseller.ml.MobilenetV110224Quant
+import id.fishku.fisherseller.ml.LiteModel
 import id.fishku.fisherseller.otp.core.Status
 import id.fishku.fisherseller.presentation.ui.DashboardActivity
 import id.fishku.fisherseller.seller.services.SessionManager
@@ -290,8 +290,7 @@ class AddFActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.btn_add -> {
-                val model = MobilenetV110224Quant.newInstance(this)
-
+                val model = LiteModel.newInstance(this)
                 // Creates inputs for reference.
                 val inputFeature0 =
                     TensorBuffer.createFixedSize(intArrayOf(1, 224, 224, 3), DataType.UINT8)
